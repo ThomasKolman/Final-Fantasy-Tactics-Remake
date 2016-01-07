@@ -5,6 +5,8 @@ layout(location = 1) in vec4 color;
 
 out vec4 vColor;
 
+uniform mat4 transformationMatrix;
+
 void main()
 {
     vColor = color;

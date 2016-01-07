@@ -131,7 +131,7 @@ public class ShaderUtils
     /**
      * @return The ID of this program.
      */
-    public int getID()
+    public int getProgramID()
     {
         return programID;
     }
