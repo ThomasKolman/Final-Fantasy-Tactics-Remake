@@ -3,9 +3,11 @@ package com.thomas.valkyrie.main;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Grid;
 import com.thomas.valkyrie.input.Input;
+import com.thomas.valkyrie.utils.ShaderUtils;
 import org.lwjgl.opengl.GL;
 
-import java.awt.*;
+import java.awt.Toolkit;
+import java.awt.Dimension;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -47,8 +49,12 @@ public class Main
 
     public void end()
     {
+        VertexArray vertexArray = new VertexArray();
+        ShaderUtils shaderUtils = new ShaderUtils();
+
         // Dispose the game
-        new VertexArray().dispose();
+        vertexArray.dispose();
+        shaderUtils.dispose();
 
         // Destroy the window
         glfwDestroyWindow(windowID);
@@ -91,7 +97,8 @@ public class Main
             System.exit(1);
         }
 
-        glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
         windowID = glfwCreateWindow(width, height, "", glfwGetPrimaryMonitor(), NULL);
 
@@ -106,6 +113,8 @@ public class Main
         glfwMakeContextCurrent(windowID);
         GL.createCapabilities();
         glfwSwapInterval(1);
+
+        System.out.println(glGetString(GL_VERSION));
     }
 
     public static void main(String[] args)
