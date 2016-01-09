@@ -8,7 +8,6 @@ import com.thomas.valkyrie.engine.VertexArray;
  */
 public class Sample
 {
-    VertexArray vertexArray;
 
     public void generateSample()
     {
@@ -27,6 +26,10 @@ public class Sample
                         1, 2, 3   // The indices for the right triangle
                 };
 
-        Texture texture = new Texture("image.png");
+        VertexArray vertexArray = new VertexArray();
+        Texture texture = new Texture();
+
+        texture.render();
+        vertexArray.render();
     }
 }

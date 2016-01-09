@@ -33,7 +33,7 @@ public class VertexArray
         System.out.println("Reg. constructor END");
     }
 
-    public VertexArray(float[] vertices, float[] textureCoords, short[] indices)
+    public VertexArray(float[] vertices, float[] colors, short[] indices)
     {
         shaderUtils.attachVertexShader("com/thomas/valkyrie/shaders/triangle.vert");
         shaderUtils.attachFragmentShader("com/thomas/valkyrie/shaders/triangle.frag");
@@ -61,21 +61,21 @@ public class VertexArray
         // Enable the vertex attribute locations
         glEnableVertexAttribArray(0);
 
-//        // Create a FloatBuffer of colors
-//        FloatBuffer colorsBuffer = BufferUtils.createFloatBuffer(colors);
-//
-//        // Create a Buffer Object and upload the colors buffer
-//        vboColID = glGenBuffers();
-//        glBindBuffer(GL_ARRAY_BUFFER, vboColID);
-//        glBufferData(GL_ARRAY_BUFFER, colorsBuffer, GL_STATIC_DRAW);
-//
-//        // Point the buffer at location 1, the location we set
-//        // inside the vertex shader. You can use any location
-//        // but the locations should match
-//        glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, 0);
-//
-//        // Enable the vertex attribute locations
-//        glEnableVertexAttribArray(1);
+        // Create a FloatBuffer of colors
+        FloatBuffer colorsBuffer = BufferUtils.createFloatBuffer(colors);
+
+        // Create a Buffer Object and upload the colors buffer
+        vboColID = glGenBuffers();
+        glBindBuffer(GL_ARRAY_BUFFER, vboColID);
+        glBufferData(GL_ARRAY_BUFFER, colorsBuffer, GL_STATIC_DRAW);
+
+        // Point the buffer at location 1, the location we set
+        // inside the vertex shader. You can use any location
+        // but the locations should match
+        glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, 0);
+
+        // Enable the vertex attribute locations
+        glEnableVertexAttribArray(1);
 
         // Create a FloatBuffer of indices
         ShortBuffer indicesBuffer = BufferUtils.createShortBuffer(indices);

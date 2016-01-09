@@ -3,6 +3,7 @@ package com.thomas.valkyrie.engine;
 import com.thomas.valkyrie.utils.BufferUtils;
 
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL13.*;
 
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
@@ -14,11 +15,6 @@ public class Texture
 {
     private int width, height;
     private int texture;
-
-    public Texture(String path)
-    {
-        texture = load(path);
-    }
 
     private int load(String path)
     {
@@ -49,23 +45,24 @@ public class Texture
             data[i] = a << 24 | b << 16 | g << 8 | r;
         }
 
-        int texture = glGenTextures();
+        texture = glGenTextures();
         glBindTexture(GL_TEXTURE_2D, texture);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, BufferUtils.createIntBuffer(data));
         glBindTexture(GL_TEXTURE_2D, 0);
         return texture;
     }
 
-   public void loadTexture(String path)
-   {
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-      float texCoords[] =
-              {
-                      0.0f, 0.0f,  // Lower-left corner
-                      1.0f, 0.0f,  // Lower-right corner
-                      0.5f, 1.0f   // Top-center corner
-              };
-   }
+    public void render()
+    {
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture);
+    }
+
 }

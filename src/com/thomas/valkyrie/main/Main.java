@@ -1,5 +1,6 @@
 package com.thomas.valkyrie.main;
 
+import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Grid;
 import com.thomas.valkyrie.input.Input;
@@ -18,6 +19,10 @@ public class Main
     private long windowID;
     private Input input = new Input();
 
+    Grid grid;
+    VertexArray vertexArray;
+    Texture texture = new Texture();
+
     private void start()
     {
         float now, last, delta;
@@ -25,7 +30,8 @@ public class Main
 
         init();
 
-        Grid grid = new Grid();
+        vertexArray = new VertexArray();
+        grid = new Grid();
         grid.generateGrid();
 
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -37,19 +43,18 @@ public class Main
 
             // Update and render
             update(delta);
-            render(delta, grid);
+            render(delta, vertexArray);
 
             // Poll the events and swap the buffers
             glfwPollEvents();
             glfwSwapBuffers(windowID);
         }
 
-        end();
+        end(vertexArray);
     }
 
-    public void end()
+    public void end(VertexArray vertexArray)
     {
-        VertexArray vertexArray = new VertexArray();
         ShaderUtils shaderUtils = new ShaderUtils();
 
         // Dispose the game
@@ -70,13 +75,14 @@ public class Main
         }
         else if (Input.isKeyDown(GLFW_KEY_ESCAPE))
         {
-            end();
+            end(vertexArray);
         }
     }
 
-    private void render(float delta, Grid grid)
+    private void render(float delta, VertexArray vertexArray)
     {
-        grid.render();
+        vertexArray.render();
+        texture.render();
     }
 
     private void dispose()
