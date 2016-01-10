@@ -67,10 +67,13 @@ public class Texture
         return texture;
     }
 
-    public void render()
+    public void bind()
     {
-        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture);
     }
 
+    public void unbind()
+    {
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
 }

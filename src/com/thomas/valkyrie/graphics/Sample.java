@@ -42,5 +42,6 @@ public class Sample
     public void render()
     {
         vertexArray.render();
+        textures.bind();
     }
 }

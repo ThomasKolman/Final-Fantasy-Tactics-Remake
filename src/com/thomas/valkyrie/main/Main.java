@@ -2,11 +2,9 @@ package com.thomas.valkyrie.main;
 
 import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.VertexArray;
-import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.graphics.Grid;
 import com.thomas.valkyrie.graphics.Sample;
 import com.thomas.valkyrie.input.Input;
-import com.thomas.valkyrie.utils.ShaderUtils;
 import org.lwjgl.opengl.GL;
 
 import java.awt.Toolkit;
@@ -60,9 +58,8 @@ public class Main
         vertexArray = new VertexArray();
         grid = new Grid();
         input = new Input();
-        sample = new Sample();
 
-        sample.generateSample();
+        //sample.generateSample();
         grid.generateGrid();
 
         // Game loop
@@ -77,9 +74,7 @@ public class Main
             update(delta);
             render(delta);
 
-            // Poll the events and swap the buffers
             glfwPollEvents();
-            glfwSwapBuffers(windowID);
         }
 
         // Ends program
@@ -126,8 +121,9 @@ public class Main
      */
     private void render(float delta)
     {
-        sample.render();
         grid.render();
+
+        glfwSwapBuffers(windowID);
     }
 
     private void dispose()
