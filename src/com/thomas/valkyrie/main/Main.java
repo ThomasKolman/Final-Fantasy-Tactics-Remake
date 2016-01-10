@@ -1,8 +1,9 @@
 package com.thomas.valkyrie.main;
 
-import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
+import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.graphics.Grid;
+import com.thomas.valkyrie.graphics.Sample;
 import com.thomas.valkyrie.input.Input;
 import com.thomas.valkyrie.utils.ShaderUtils;
 import org.lwjgl.opengl.GL;
@@ -35,7 +36,7 @@ public class Main
     private Input input;
     private Grid grid;
     private VertexArray vertexArray;
-    private Texture texture;
+    private Sample sample;
 
     /**
      * Hosts initial method calls and game loop
@@ -51,6 +52,7 @@ public class Main
         // Initializes program
         init();
 
+        sample.generateSample();
         grid.generateGrid();
 
         // Game loop
@@ -117,6 +119,7 @@ public class Main
      */
     private void render(float delta)
     {
+        sample.render();
         grid.render();
         //texture.render();
     }
@@ -176,7 +179,7 @@ public class Main
         vertexArray = new VertexArray();
         grid = new Grid();
         input = new Input();
-        texture = new Texture();
+        sample = new Sample();
 
         // Sets event listener for the new window
         glfwSetKeyCallback(windowID, input);

@@ -8,24 +8,39 @@ import com.thomas.valkyrie.engine.VertexArray;
  */
 public class Sample
 {
+    VertexArray vertexArray;
+    Texture textures;
 
     public void generateSample()
     {
         float[] vertices = new float[]
                 {
-                        -0.9f, +0.9f,  // ID 0: Top left vertex
-                        -0.8f, +0.9f,  // ID 1: Top right vertex
-                        -0.9f, +0.8f,  // ID 2: Bottom left vertex
-                        -0.8f, +0.8f   // ID 3: Bottom right vertex
+                        -10.0f, -10.0f * 9.0f / 16.0f, 0.0f,
+                        -10.0f,  10.0f * 9.0f / 16.0f, 0.0f,
+                        0.0f,  10.0f * 9.0f / 16.0f, 0.0f,
+                        0.0f, -10.0f * 9.0f / 16.0f, 0.0f,
                 };
 
-        // The indices that form the rectangle
-        short[] indices = new short[]
+        byte[] indices = new byte[]
                 {
-                        0, 1, 2,  // The indices for the left triangle
-                        1, 2, 3   // The indices for the right triangle
+                        0, 1, 2,
+                        2, 3, 0
                 };
 
-        VertexArray vertexArray = new VertexArray();
+        float[] tcs = new float[]
+                {
+                        0, 1,
+                        0, 0,
+                        1, 0,
+                        1, 1
+                };
+
+        vertexArray = new VertexArray();
+        textures = new Texture("res/image.png");
+    }
+
+    public void render()
+    {
+        vertexArray.render();
     }
 }

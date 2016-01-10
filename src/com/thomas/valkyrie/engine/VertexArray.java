@@ -24,7 +24,7 @@ public class VertexArray
 
     private ShaderUtils shaderUtils = new ShaderUtils();
 
-    private int vaoID, vboVertID, vboColID, eboID;
+    private int vaoID, vboVertID, vboTexID, eboID;
     private int count;
 
     public VertexArray()
@@ -33,7 +33,7 @@ public class VertexArray
         System.out.println("Reg. constructor END");
     }
 
-    public VertexArray(float[] vertices, float[] colors, short[] indices)
+    public VertexArray(float[] vertices, float[] textureCoordinates, short[] indices)
     {
         shaderUtils.attachVertexShader("com/thomas/valkyrie/shaders/triangle.vert");
         shaderUtils.attachFragmentShader("com/thomas/valkyrie/shaders/triangle.frag");
@@ -52,29 +52,17 @@ public class VertexArray
         vboVertID = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER, vboVertID);
         glBufferData(GL_ARRAY_BUFFER, verticesBuffer, GL_STATIC_DRAW);
-
-        // Point the buffer at location 0, the location we set
-        // inside the vertex shader. You can use any location
-        // but the locations should match
         glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
-
-        // Enable the vertex attribute locations
         glEnableVertexAttribArray(0);
 
         // Create a FloatBuffer of colors
-        FloatBuffer colorsBuffer = BufferUtils.createFloatBuffer(colors);
+        FloatBuffer colorsBuffer = BufferUtils.createFloatBuffer(textureCoordinates);
 
         // Create a Buffer Object and upload the colors buffer
-        vboColID = glGenBuffers();
-        glBindBuffer(GL_ARRAY_BUFFER, vboColID);
+        vboTexID = glGenBuffers();
+        glBindBuffer(GL_ARRAY_BUFFER, vboTexID);
         glBufferData(GL_ARRAY_BUFFER, colorsBuffer, GL_STATIC_DRAW);
-
-        // Point the buffer at location 1, the location we set
-        // inside the vertex shader. You can use any location
-        // but the locations should match
         glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, 0);
-
-        // Enable the vertex attribute locations
         glEnableVertexAttribArray(1);
 
         // Create a FloatBuffer of indices
@@ -84,6 +72,8 @@ public class VertexArray
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, eboID);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesBuffer, GL_STATIC_DRAW);
 
+//        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+//        glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
     }
 
@@ -123,6 +113,6 @@ public class VertexArray
         // Dispose the buffer object
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glDeleteBuffers(vboVertID);
-        glDeleteBuffers(vboColID);
+        glDeleteBuffers(vboTexID);
     }
 }

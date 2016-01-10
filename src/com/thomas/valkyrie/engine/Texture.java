@@ -16,6 +16,19 @@ public class Texture
     private int width, height;
     private int texture;
 
+    public Texture(String path)
+    {
+        load(path);
+    }
+
+    /**
+     * Loads texture and changes format to suit OpenGL texturing
+     *
+     * CITED CODE : https://www.youtube.com/watch?v=9XpYo6UTMZ4&feature=youtu.be
+     *
+     * @param path
+     * @return
+     */
     private int load(String path)
     {
         int pixels[] = null;
@@ -53,11 +66,6 @@ public class Texture
         glBindTexture(GL_TEXTURE_2D, 0);
         return texture;
     }
-
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     public void render()
     {

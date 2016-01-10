@@ -36,6 +36,9 @@ public class Grid
                 };
 
         vertexArray = new VertexArray(vertices, colors, indices);
+//        texture = new Texture();
+//        texture.load("res/image.png");
+//        texture.render();
     }
 
     public void render()
