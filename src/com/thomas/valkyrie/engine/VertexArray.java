@@ -22,9 +22,7 @@ public class VertexArray
     private List<Integer> vbos = new ArrayList<Integer>();
     private List<Integer> textures = new ArrayList<Integer>();
 
-    private ShaderUtils shaderUtils = new ShaderUtils();
-
-    private int vaoID, vboVertID, vboTexID, eboID;
+    private int vaoID, vboVertID, vboTexID, iboID;
     private int count;
 
     public VertexArray()
@@ -35,10 +33,6 @@ public class VertexArray
 
     public VertexArray(float[] vertices, float[] textureCoordinates, short[] indices)
     {
-        shaderUtils.attachVertexShader("com/thomas/valkyrie/shaders/triangle.vert");
-        shaderUtils.attachFragmentShader("com/thomas/valkyrie/shaders/triangle.frag");
-        shaderUtils.link();
-
         count = indices.length;
 
         // Generate and bind a Vertex Array
@@ -68,8 +62,8 @@ public class VertexArray
         // Create a FloatBuffer of indices
         ShortBuffer indicesBuffer = BufferUtils.createShortBuffer(indices);
 
-        eboID = glGenBuffers();
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, eboID);
+        iboID = glGenBuffers();
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesBuffer, GL_STATIC_DRAW);
 
 //        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -84,7 +78,7 @@ public class VertexArray
         glClear(GL_COLOR_BUFFER_BIT);
 
         // Use our program
-        shaderUtils.bind();
+        // shaderUtils.bind();
 
         // Bind the vertex array and enable our location
         glBindVertexArray(vaoID);
@@ -96,7 +90,7 @@ public class VertexArray
         glBindVertexArray(0);
 
         // Un-bind our program
-        shaderUtils.unbind();
+//        shaderUtils.unbind();
     }
 
     public void dispose()
@@ -104,7 +98,7 @@ public class VertexArray
         System.out.println("Disposing of vertex array");
 
         // Dispose the program
-        shaderUtils.dispose();
+        // shaderUtils.dispose();
 
         // Dispose the vertex array
         glBindVertexArray(0);

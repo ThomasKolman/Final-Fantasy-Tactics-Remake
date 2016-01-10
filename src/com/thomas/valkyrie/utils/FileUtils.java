@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 public class FileUtils
 {
 
-    public static String readFromFile(String name)
+    public static String loadAsString(String name)
     {
         StringBuilder source = new StringBuilder();
         try

@@ -1,5 +1,6 @@
 package com.thomas.valkyrie.main;
 
+import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.graphics.Grid;
@@ -52,6 +53,15 @@ public class Main
         // Initializes program
         init();
 
+        Shader shader = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
+        shader.enable();
+
+        // Initializes all objects needed during render/update cycle
+        vertexArray = new VertexArray();
+        grid = new Grid();
+        input = new Input();
+        sample = new Sample();
+
         sample.generateSample();
         grid.generateGrid();
 
@@ -83,11 +93,8 @@ public class Main
      */
     public void end()
     {
-        ShaderUtils shaderUtils = new ShaderUtils();
-
         // Dispose the game
         vertexArray.dispose();
-        shaderUtils.dispose();
 
         // Destroy the window
         glfwDestroyWindow(windowID);
@@ -121,7 +128,6 @@ public class Main
     {
         sample.render();
         grid.render();
-        //texture.render();
     }
 
     private void dispose()
@@ -174,12 +180,6 @@ public class Main
         glfwMakeContextCurrent(windowID);
         GL.createCapabilities();
         glfwSwapInterval(1);
-
-        // Initializes all objects needed during render/update cycle
-        vertexArray = new VertexArray();
-        grid = new Grid();
-        input = new Input();
-        sample = new Sample();
 
         // Sets event listener for the new window
         glfwSetKeyCallback(windowID, input);
