@@ -114,6 +114,7 @@ public class VertexArray
         System.out.println("Disposing of vertex array");
 
         // Dispose the program
+        shaderUtils.dispose();
 
         // Dispose the vertex array
         glBindVertexArray(0);

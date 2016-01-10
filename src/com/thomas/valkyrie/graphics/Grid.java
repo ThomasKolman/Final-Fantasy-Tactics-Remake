@@ -11,8 +11,6 @@ public class Grid
 
     public void generateGrid()
     {
-
-
         // The vertices of our Triangle
         float[] vertices = new float[]
                 {
@@ -21,7 +19,7 @@ public class Grid
                         -0.9f, +0.8f,  // ID 2: Bottom left vertex
                         -0.8f, +0.8f   // ID 3: Bottom right vertex
                 };
-        
+
         float[] colors = new float[]
                 {
                         0, 1, 0, 1,    // Red color for top left vertex

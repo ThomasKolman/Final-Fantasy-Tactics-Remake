@@ -27,9 +27,5 @@ public class Sample
                 };
 
         VertexArray vertexArray = new VertexArray();
-        Texture texture = new Texture();
-
-        texture.render();
-        vertexArray.render();
     }
 }

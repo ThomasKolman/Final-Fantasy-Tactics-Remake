@@ -117,8 +117,8 @@ public class Main
      */
     private void render(float delta)
     {
-        vertexArray.render();
-        texture.render();
+        grid.render();
+        //texture.render();
     }
 
     private void dispose()
