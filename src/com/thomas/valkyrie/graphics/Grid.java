@@ -14,25 +14,25 @@ public class Grid {
         // The vertices of our Triangle
         float[] vertices = new float[]
                 {
-                        -0.8f, +0.8f,  // ID 0: Top left vertex
-                        +0.8f, +0.8f,  // ID 1: Top right vertex
-                        -0.8f, -0.8f,  // ID 2: Bottom left vertex
-                        +0.8f, -0.8f   // ID 3: Bottom right vertex
+                        -0.5f, 0.5f,
+                        -0.5f, -0.5f,
+                        0.5f, -0.5f,
+                        0.5f, 0.5f
                 };
 
         float[] textureCoordinates = new float[]
                 {
-                        0, 0,
                         0, 1,
-                        1, 1,
-                        1, 0
+                        0, 0,
+                        1, 0,
+                        1, 1
                 };
 
         // The indices that form the rectangle
         short[] indices = new short[]
                 {
-                        0, 1, 2,  // The indices for the left triangle
-                        1, 2, 3   // The indices for the right triangle
+                        0,1,3,
+                        3,1,2
                 };
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);

@@ -1,6 +1,11 @@
 package com.thomas.valkyrie.utils;
 
+import org.newdawn.slick.opengl.Texture;
+import org.newdawn.slick.opengl.TextureLoader;
+
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
