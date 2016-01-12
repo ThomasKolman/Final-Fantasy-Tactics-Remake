@@ -3,7 +3,6 @@ package com.thomas.valkyrie.main;
 import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Grid;
-import com.thomas.valkyrie.graphics.Sample;
 import com.thomas.valkyrie.input.Input;
 import org.lwjgl.opengl.GL;
 
@@ -35,7 +34,6 @@ public class Main
     private Input input;
     private Grid grid;
     private VertexArray vertexArray;
-    private Sample sample;
 
     /**
      * Hosts initial method calls and game loop
@@ -57,9 +55,8 @@ public class Main
         // Initializes all objects needed during render/update cycle
         vertexArray = new VertexArray();
         grid = new Grid();
-        input = new Input();
 
-        //sample.generateSample();
+//        sample.generateSample();
         grid.generateGrid();
 
         // Game loop
@@ -75,6 +72,7 @@ public class Main
             render(delta);
 
             glfwPollEvents();
+            glfwSwapBuffers(windowID);
         }
 
         // Ends program
@@ -121,9 +119,8 @@ public class Main
      */
     private void render(float delta)
     {
+//        sample.render();
         grid.render();
-
-        glfwSwapBuffers(windowID);
     }
 
     private void dispose()
@@ -178,6 +175,7 @@ public class Main
         glfwSwapInterval(1);
 
         // Sets event listener for the new window
+        input = new Input();
         glfwSetKeyCallback(windowID, input);
 
         // Prints out OpenGL version being used

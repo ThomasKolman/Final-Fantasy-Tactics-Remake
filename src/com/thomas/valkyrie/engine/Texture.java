@@ -3,7 +3,6 @@ package com.thomas.valkyrie.engine;
 import com.thomas.valkyrie.utils.BufferUtils;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL13.*;
 
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
@@ -57,6 +56,7 @@ public class Texture
 
             data[i] = a << 24 | b << 16 | g << 8 | r;
         }
+
 
         texture = glGenTextures();
         glBindTexture(GL_TEXTURE_2D, texture);
