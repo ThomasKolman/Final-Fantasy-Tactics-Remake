@@ -22,11 +22,17 @@ public class Grid {
 
         float[] textureCoordinates = new float[]
                 {
+
                         0, 1,
-                        0, 0,
+                        1, 1,
                         1, 0,
-                        1, 1
+                        0, 0
                 };
+
+//        0, 1,
+//                0, 0,
+//                1, 0,
+//                1, 1
 
         // The indices that form the rectangle
         short[] indices = new short[]
@@ -36,7 +42,7 @@ public class Grid {
                 };
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
-        texture = new Texture("res/facebook.png");
+        texture = new Texture("res/skype.png");
     }
 
     public void render() {

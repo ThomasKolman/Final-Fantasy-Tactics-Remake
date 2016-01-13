@@ -1,6 +1,5 @@
 package com.thomas.valkyrie.engine;
 
-import com.thomas.valkyrie.utils.ShaderUtils;
 import com.thomas.valkyrie.utils.BufferUtils;
 
 import java.nio.FloatBuffer;
@@ -56,7 +55,7 @@ public class VertexArray
         vboTexID = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER, vboTexID);
         glBufferData(GL_ARRAY_BUFFER, colorsBuffer, GL_STATIC_DRAW);
-        glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, 0);
+        glVertexAttribPointer(1, 2, GL_FLOAT, false, 0, 0);
         glEnableVertexAttribArray(1);
 
         // Create a FloatBuffer of indices
@@ -66,8 +65,7 @@ public class VertexArray
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesBuffer, GL_STATIC_DRAW);
 
-//        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-//        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
     }
 

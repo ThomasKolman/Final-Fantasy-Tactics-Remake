@@ -56,7 +56,6 @@ public class Main
         vertexArray = new VertexArray();
         grid = new Grid();
 
-//        sample.generateSample();
         grid.generateGrid();
 
         // Game loop
@@ -119,7 +118,6 @@ public class Main
      */
     private void render(float delta)
     {
-//        sample.render();
         grid.render();
     }
 

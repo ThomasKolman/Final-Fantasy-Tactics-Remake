@@ -21,7 +21,7 @@ public class BufferUtils {
 
     public static FloatBuffer createFloatBuffer(float[] array)
     {
-        FloatBuffer result = org.lwjgl.BufferUtils.createFloatBuffer(array.length);
+        FloatBuffer result = ByteBuffer.allocateDirect(array.length << 2).order(ByteOrder.nativeOrder()).asFloatBuffer();
         result.put(array).flip();
         return result;
     }
