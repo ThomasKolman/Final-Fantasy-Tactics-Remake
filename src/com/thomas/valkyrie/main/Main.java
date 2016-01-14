@@ -5,6 +5,7 @@ import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Grid;
 import com.thomas.valkyrie.input.Input;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.util.vector.Matrix4f;
 
 import java.awt.Toolkit;
 import java.awt.Dimension;
@@ -49,8 +50,9 @@ public class Main
         // Initializes program
         init();
 
-        Shader shader = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
-        shader.enable();
+        Shader.BG.loadAll();
+        Shader.BG.enable();
+
 
         // Initializes all objects needed during render/update cycle
         vertexArray = new VertexArray();
