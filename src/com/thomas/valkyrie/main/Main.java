@@ -1,11 +1,11 @@
 package com.thomas.valkyrie.main;
 
+import com.thomas.valkyrie.audio.Audio;
 import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Grid;
 import com.thomas.valkyrie.input.Input;
 import org.lwjgl.opengl.GL;
-import org.lwjgl.util.vector.Matrix4f;
 
 import java.awt.Toolkit;
 import java.awt.Dimension;
@@ -28,13 +28,14 @@ import static org.lwjgl.system.MemoryUtil.NULL;
  * This class handles all the main processes that take up the game, including the initial setup, the
  * game loop, and the disposal of resources allocated during the game
  */
-public class Main
+public class Main implements Runnable
 {
     private long windowID;
 
     private Input input;
     private Grid grid;
     private VertexArray vertexArray;
+    private Thread thread;
 
     /**
      * Hosts initial method calls and game loop
@@ -58,6 +59,9 @@ public class Main
         vertexArray = new VertexArray();
         grid = new Grid();
 
+        thread = new Thread(this, "Game");
+        thread.start();
+
         grid.generateGrid();
 
         // Game loop
@@ -78,6 +82,17 @@ public class Main
 
         // Ends program
         end();
+    }
+
+    public void run()
+    {
+        System.out.println("hey");
+        Audio.loadMP3File();
+
+        while (true)
+        {
+            Audio.playMP3File();
+        }
     }
 
     /**
