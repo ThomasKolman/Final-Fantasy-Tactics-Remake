@@ -45,7 +45,7 @@ public class VertexArray
         vboVertID = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER, vboVertID);
         glBufferData(GL_ARRAY_BUFFER, verticesBuffer, GL_STATIC_DRAW);
-        glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
         glEnableVertexAttribArray(0);
 
         // Create a FloatBuffer of colors

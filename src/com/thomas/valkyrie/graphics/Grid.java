@@ -14,10 +14,10 @@ public class Grid {
         // The vertices of our Triangle
         float[] vertices = new float[]
                 {
-                        -0.5f, 0.5f,
-                        -0.5f, -0.5f,
-                        0.5f, -0.5f,
-                        0.5f, 0.5f
+                        -0.5f, 0.5f, 0.0f,
+                        -0.5f, -0.5f, 0.0f,
+                        0.5f, -0.5f, 0.0f,
+                        0.5f, 0.5f, 0.0f
                 };
 
         float[] textureCoordinates = new float[]

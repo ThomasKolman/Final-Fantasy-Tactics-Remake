@@ -5,7 +5,10 @@ import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Grid;
 import com.thomas.valkyrie.input.Input;
+import com.thomas.valkyrie.maths.Matrix4f;
+import com.thomas.valkyrie.maths.Vector3f;
 import org.lwjgl.opengl.GL;
+import static org.lwjgl.opengl.GL20.*;
 
 import java.awt.Toolkit;
 import java.awt.Dimension;
@@ -62,6 +65,7 @@ public class Main implements Runnable
 //        thread.start();
 
         grid.generateGrid();
+        Shader.BG.setUniformMat4("gWorld", Matrix4f.translate(new Vector3f(0.0f, 1.0f, 1.0f)));
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -70,6 +74,11 @@ public class Main implements Runnable
             now = (float) glfwGetTime();
             delta = now - last;
             last = now;
+
+//            float timeValue = (float) glfwGetTime();
+//            float greenValue = (float) ((Math.sin((timeValue) / 2) + 0.5));
+//            int vertexColorLocation = Shader.BG.getUniformLocation("vColor");
+//            glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 
             // Update and render
             update(delta);

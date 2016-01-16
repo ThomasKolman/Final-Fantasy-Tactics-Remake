@@ -1,12 +1,12 @@
 package com.thomas.valkyrie.engine;
 
 import com.thomas.valkyrie.maths.Vector3f;
+import com.thomas.valkyrie.maths.Matrix4f;
 import com.thomas.valkyrie.utils.BufferUtils;
 import com.thomas.valkyrie.utils.ShaderUtils;
-import org.lwjgl.util.vector.Matrix4f;
+import com.thomas.valkyrie.maths.Vector3f;
 
 import java.nio.FloatBuffer;
-import sun.audio.*;
 
 import static org.lwjgl.opengl.GL20.*;
 
@@ -43,41 +43,14 @@ public class Shader
         location_transformationMatrix = getUniformLocation("transformationMatrix");
     }
 
-    public void loadTransformationMatrix(Matrix4f matrix)
-    {
-        loadMatrix(location_transformationMatrix, matrix);
-    }
-
     public void setUniform3f(String name, Vector3f vector)
     {
         glUniform3f(getUniformLocation(name), vector.x, vector.y, vector.z);
     }
 
-    public void loadFloat(int location, float value)
+    public void setUniformMat4(String name, Matrix4f matrix4f)
     {
-        glUniform1f(location, value);
-    }
-
-    public void loadVector(int location, Vector3f vector)
-    {
-        glUniform3f(location, vector.x, vector.y, vector.z);
-    }
-
-    public void loadBoolean(int location, boolean value)
-    {
-        float toLoad = 0;
-        if( value )
-        {
-            toLoad = 1;
-        }
-        glUniform1f(location, toLoad);
-    }
-
-    public void loadMatrix(int location, Matrix4f matrix)
-    {
-        matrix.store(matrixBuffer);
-        matrixBuffer.flip();
-        glUniformMatrix4fv(location, false, matrixBuffer);
+        glUniformMatrix4fv(getUniformLocation(name), false, matrix4f.toFloatBuffer());
     }
 
     public void enable()
