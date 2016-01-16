@@ -9,11 +9,13 @@ import com.thomas.valkyrie.maths.Vector3f;
 /**
  * Created by Thomas on 2016-01-06.
  */
-public class Grid {
+public class Grid
+{
     VertexArray vertexArray;
     Texture texture;
 
-    public void generateGrid() {
+    public void generateGrid()
+    {
         // The vertices of our Triangle
         float[] vertices = new float[]
                 {
@@ -39,11 +41,12 @@ public class Grid {
                 };
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
-        texture = new Texture("res/image.png");
-        Shader.BG.setUniformMat4("transformationMatrix", Matrix4f.translate(new Vector3f(0.0f, 0.0f, 0.0f)));
+        texture = new Texture("image");
+        Shader.BG.setUniformMat4("transformationMatrix", Matrix4f.translate(new Vector3f(1.0f, 0.0f, 0.0f)));
     }
 
-    public void render() {
+    public void render()
+    {
         vertexArray.render();
         texture.bind();
     }

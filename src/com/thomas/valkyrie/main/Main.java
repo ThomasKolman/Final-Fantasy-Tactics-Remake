@@ -5,11 +5,9 @@ import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Grid;
+import com.thomas.valkyrie.graphics.Pipe;
 import com.thomas.valkyrie.input.Input;
-import com.thomas.valkyrie.maths.Matrix4f;
-import com.thomas.valkyrie.maths.Vector3f;
 import org.lwjgl.opengl.GL;
-import static org.lwjgl.opengl.GL20.*;
 
 import java.awt.Toolkit;
 import java.awt.Dimension;
@@ -38,6 +36,7 @@ public class Main implements Runnable
 
     private Input input;
     private Grid grid;
+    private Pipe pipe;
     private Thread thread;
 
     /**
@@ -56,8 +55,6 @@ public class Main implements Runnable
 
         Shader.BG.loadAll();
         Shader.BG.enable();
-
-        // Initializes all objects needed during render/update cycle
         grid = new Grid();
 
         thread = new Thread(this, "Game");
@@ -136,13 +133,11 @@ public class Main implements Runnable
      */
     private void render(float delta)
     {
+        // Clear the screen
+        glClearColor(0.3f, 0.4f, 0.1f,1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
         grid.render();
-    }
-
-    private void dispose()
-    {
-        // TODO Auto-generated method stub
-
     }
 
     /**

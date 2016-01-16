@@ -33,37 +33,27 @@ public class VertexArray
         allVAOs.add(vaoID);
         glBindVertexArray(vaoID);
 
-        // Create a FloatBuffer of vertices
-        FloatBuffer verticesBuffer = BufferUtils.createFloatBuffer(vertices);
-
         // Create a Buffer Object and upload the vertices buffer
         vboVertID = glGenBuffers();
         allVBOs.add(vboVertID);
-
         glBindBuffer(GL_ARRAY_BUFFER, vboVertID);
-        glBufferData(GL_ARRAY_BUFFER, verticesBuffer, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, BufferUtils.createFloatBuffer(vertices), GL_STATIC_DRAW);
         glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
         glEnableVertexAttribArray(0);
-
-        // Create a FloatBuffer of colors
-        FloatBuffer colorsBuffer = BufferUtils.createFloatBuffer(textureCoordinates);
 
         // Create a Buffer Object and upload the colors buffer
         vboTexID = glGenBuffers();
         allVBOs.add(vboTexID);
-
         glBindBuffer(GL_ARRAY_BUFFER, vboTexID);
-        glBufferData(GL_ARRAY_BUFFER, colorsBuffer, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, BufferUtils.createFloatBuffer(textureCoordinates), GL_STATIC_DRAW);
         glVertexAttribPointer(1, 2, GL_FLOAT, false, 0, 0);
         glEnableVertexAttribArray(1);
 
         // Create a FloatBuffer of indices
-        ShortBuffer indicesBuffer = BufferUtils.createShortBuffer(indices);
-
         iboID = glGenBuffers();
         allVBOs.add(iboID);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesBuffer, GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, BufferUtils.createShortBuffer(indices), GL_STATIC_DRAW);
 
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
@@ -71,10 +61,6 @@ public class VertexArray
 
     public void render()
     {
-        // Clear the screen
-        glClearColor(0.3f, 0.4f, 0.1f,1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
         // Bind the vertex array and enable our location
         glBindVertexArray(vaoID);
 
