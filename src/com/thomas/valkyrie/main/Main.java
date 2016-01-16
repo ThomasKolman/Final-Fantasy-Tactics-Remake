@@ -64,7 +64,6 @@ public class Main implements Runnable
         thread.start();
 
         grid.generateGrid();
-        Shader.BG.setUniformMat4("gWorld", Matrix4f.translate(new Vector3f(1.0f, 1.0f, 1.0f)));
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -92,7 +91,7 @@ public class Main implements Runnable
 
         while (true)
         {
-            Audio.playMP3File();
+            //Audio.playMP3File();
         }
     }
 

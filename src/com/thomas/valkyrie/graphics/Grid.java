@@ -1,7 +1,10 @@
 package com.thomas.valkyrie.graphics;
 
+import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
+import com.thomas.valkyrie.maths.Matrix4f;
+import com.thomas.valkyrie.maths.Vector3f;
 
 /**
  * Created by Thomas on 2016-01-06.
@@ -37,6 +40,7 @@ public class Grid {
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
         texture = new Texture("res/image.png");
+        Shader.BG.setUniformMat4("transformationMatrix", Matrix4f.translate(new Vector3f(0.0f, 0.0f, 0.0f)));
     }
 
     public void render() {
