@@ -36,7 +36,7 @@ public class Grid {
                 };
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
-        texture = new Texture("res/facebook.png");
+        texture = new Texture("res/image.png");
     }
 
     public void render() {

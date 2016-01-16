@@ -54,13 +54,12 @@ public class Main implements Runnable
         Shader.BG.loadAll();
         Shader.BG.enable();
 
-
         // Initializes all objects needed during render/update cycle
         vertexArray = new VertexArray();
         grid = new Grid();
 
-        thread = new Thread(this, "Game");
-        thread.start();
+//        thread = new Thread(this, "Game");
+//        thread.start();
 
         grid.generateGrid();
 

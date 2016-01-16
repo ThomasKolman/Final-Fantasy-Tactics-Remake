@@ -1,12 +1,6 @@
 package com.thomas.valkyrie.utils;
 
-import org.newdawn.slick.opengl.Texture;
-import org.newdawn.slick.opengl.TextureLoader;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /**
  * Created by Thomas on 2015-12-13.
@@ -19,7 +13,7 @@ public class FileUtils
         StringBuilder source = new StringBuilder();
         try
         {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(ShaderUtils.class.getClassLoader().getResourceAsStream(name)));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(ShaderUtils.class.getClassLoader().getResourceAsStream(name)));
 
             String line;
 
@@ -30,10 +24,15 @@ public class FileUtils
 
             reader.close();
         }
-        catch (Exception e)
+        catch (FileNotFoundException ex)
+        {
+            System.err.println("File does not exist: " + name);
+            ex.printStackTrace();
+        }
+        catch (IOException ex)
         {
             System.err.println("Error loading source code: " + name);
-            e.printStackTrace();
+            ex.printStackTrace();
         }
 
         return source.toString();
