@@ -15,15 +15,14 @@ import javazoom.jl.decoder.JavaLayerException;
  */
 public class Audio
 {
-
+    //For loading up .WAV file formats
     private static AudioPlayer MGP = AudioPlayer.player;
     private static ContinuousAudioDataStream loop = null;
-    private static String path = "Yamaha-TG100-SquareLd-C5";
 
-    private static MediaPlayer mediaPlayer;
+    // For loading up .MP3 file formats
     private static Player player;
 
-    public static void loadWAVFile()
+    public static void loadWAVFile(String path)
     {
         AudioStream BGM;
         AudioData MD;
@@ -32,7 +31,7 @@ public class Audio
         {
             BGM = new AudioStream(new FileInputStream("res/" + path + ".wav" ));
             MD = BGM.getData();
-            loop = new ContinuousAudioDataStream(MD);
+            ContinuousAudioDataStream loop = new ContinuousAudioDataStream(MD);
         }
         catch (IOException ex)
         {
@@ -45,13 +44,11 @@ public class Audio
         MGP.start(loop);
     }
 
-    public static void loadMP3File()
+    public static void loadMP3File(String path)
     {
-        String bip = "ZHU - FADED";
-
         try
         {
-            File file = new File("res/" + bip + ".mp3");
+            File file = new File("res/" + path + ".mp3");
             FileInputStream fileInputStream = new FileInputStream(file);
             BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
 
@@ -60,14 +57,13 @@ public class Audio
         }
         catch (IOException ex)
         {
-
+            ex.printStackTrace();
         }
         catch (JavaLayerException ex)
         {
-
+            ex.printStackTrace();
         }
     }
-
 
     public static void playMP3File()
     {

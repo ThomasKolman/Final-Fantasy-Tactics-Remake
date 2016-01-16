@@ -2,6 +2,7 @@ package com.thomas.valkyrie.main;
 
 import com.thomas.valkyrie.audio.Audio;
 import com.thomas.valkyrie.engine.Shader;
+import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Grid;
 import com.thomas.valkyrie.input.Input;
@@ -37,7 +38,6 @@ public class Main implements Runnable
 
     private Input input;
     private Grid grid;
-    private VertexArray vertexArray;
     private Thread thread;
 
     /**
@@ -58,14 +58,13 @@ public class Main implements Runnable
         Shader.BG.enable();
 
         // Initializes all objects needed during render/update cycle
-        vertexArray = new VertexArray();
         grid = new Grid();
 
-//        thread = new Thread(this, "Game");
-//        thread.start();
+        thread = new Thread(this, "Game");
+        thread.start();
 
         grid.generateGrid();
-        Shader.BG.setUniformMat4("gWorld", Matrix4f.translate(new Vector3f(0.0f, 1.0f, 1.0f)));
+        Shader.BG.setUniformMat4("gWorld", Matrix4f.translate(new Vector3f(1.0f, 1.0f, 1.0f)));
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -74,11 +73,6 @@ public class Main implements Runnable
             now = (float) glfwGetTime();
             delta = now - last;
             last = now;
-
-//            float timeValue = (float) glfwGetTime();
-//            float greenValue = (float) ((Math.sin((timeValue) / 2) + 0.5));
-//            int vertexColorLocation = Shader.BG.getUniformLocation("vColor");
-//            glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 
             // Update and render
             update(delta);
@@ -94,8 +88,7 @@ public class Main implements Runnable
 
     public void run()
     {
-        System.out.println("hey");
-        Audio.loadMP3File();
+        Audio.loadMP3File("ZHU - FADED");
 
         while (true)
         {
@@ -111,7 +104,8 @@ public class Main implements Runnable
     public void end()
     {
         // Dispose the game
-        vertexArray.dispose();
+        VertexArray.dispose();
+        Texture.dispose();
 
         // Destroy the window
         glfwDestroyWindow(windowID);

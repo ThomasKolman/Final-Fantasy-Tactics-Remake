@@ -2,11 +2,7 @@ package com.thomas.valkyrie.engine;
 
 import com.thomas.valkyrie.maths.Vector3f;
 import com.thomas.valkyrie.maths.Matrix4f;
-import com.thomas.valkyrie.utils.BufferUtils;
 import com.thomas.valkyrie.utils.ShaderUtils;
-import com.thomas.valkyrie.maths.Vector3f;
-
-import java.nio.FloatBuffer;
 
 import static org.lwjgl.opengl.GL20.*;
 
@@ -17,10 +13,6 @@ public class Shader
 {
     private int ID;
     public static Shader BG;
-
-    // USES CUSTOM BUFFERUTILS CLASS ;; SWITCH TO LWJGL'S DEFAULT IMPLEMENT IF NOT WORKING
-    private static FloatBuffer matrixBuffer = BufferUtils.createFloatBuffer(16);
-
     private int location_transformationMatrix;
 
     public Shader(String vertex, String fragment)

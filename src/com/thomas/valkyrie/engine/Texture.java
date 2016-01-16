@@ -8,14 +8,15 @@ import static org.lwjgl.opengl.GL13.*;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
 public class Texture
 {
-    private int width, height;
     private int texture;
-    private BufferedImage image;
+    private static List<Integer> allTextures = new ArrayList<Integer>();
 
     public Texture(String path)
     {
@@ -33,10 +34,12 @@ public class Texture
     private int load(String path)
     {
         int pixels[] = null;
+        int width = 0;
+        int height = 0;
 
         try
         {
-            image = ImageIO.read(new FileInputStream(path));
+            BufferedImage image = ImageIO.read(new FileInputStream(path));
             width = image.getWidth();
             height = image.getHeight();
             pixels = new int[width * height];
@@ -60,6 +63,8 @@ public class Texture
         }
 
         int result = glGenTextures();
+        allTextures.add(result);
+
         glBindTexture(GL_TEXTURE_2D, result);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -77,5 +82,13 @@ public class Texture
     public void unbind()
     {
         glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    public static void dispose()
+    {
+        for (int texture:allTextures)
+        {
+            glDeleteTextures(texture);
+        }
     }
 }

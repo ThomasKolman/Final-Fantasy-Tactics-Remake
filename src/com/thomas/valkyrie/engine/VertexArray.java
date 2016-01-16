@@ -1,6 +1,7 @@
 package com.thomas.valkyrie.engine;
 
 import com.thomas.valkyrie.utils.BufferUtils;
+import sun.security.provider.certpath.Vertex;
 
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
@@ -17,18 +18,11 @@ import static org.lwjgl.opengl.GL30.*;
  */
 public class VertexArray
 {
-    private List<Integer> vaos = new ArrayList<Integer>();
-    private List<Integer> vbos = new ArrayList<Integer>();
-    private List<Integer> textures = new ArrayList<Integer>();
+    private static List<Integer> allVAOs = new ArrayList<Integer>();
+    private static List<Integer> allVBOs = new ArrayList<Integer>();
 
     private int vaoID, vboVertID, vboTexID, iboID;
     private int count;
-
-    public VertexArray()
-    {
-        System.out.println("Reg. constructor");
-        System.out.println("Reg. constructor END");
-    }
 
     public VertexArray(float[] vertices, float[] textureCoordinates, short[] indices)
     {
@@ -36,6 +30,7 @@ public class VertexArray
 
         // Generate and bind a Vertex Array
         vaoID = glGenVertexArrays();
+        allVAOs.add(vaoID);
         glBindVertexArray(vaoID);
 
         // Create a FloatBuffer of vertices
@@ -43,6 +38,8 @@ public class VertexArray
 
         // Create a Buffer Object and upload the vertices buffer
         vboVertID = glGenBuffers();
+        allVBOs.add(vboVertID);
+
         glBindBuffer(GL_ARRAY_BUFFER, vboVertID);
         glBufferData(GL_ARRAY_BUFFER, verticesBuffer, GL_STATIC_DRAW);
         glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
@@ -53,6 +50,8 @@ public class VertexArray
 
         // Create a Buffer Object and upload the colors buffer
         vboTexID = glGenBuffers();
+        allVBOs.add(vboTexID);
+
         glBindBuffer(GL_ARRAY_BUFFER, vboTexID);
         glBufferData(GL_ARRAY_BUFFER, colorsBuffer, GL_STATIC_DRAW);
         glVertexAttribPointer(1, 2, GL_FLOAT, false, 0, 0);
@@ -62,6 +61,7 @@ public class VertexArray
         ShortBuffer indicesBuffer = BufferUtils.createShortBuffer(indices);
 
         iboID = glGenBuffers();
+        allVBOs.add(iboID);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesBuffer, GL_STATIC_DRAW);
 
@@ -75,9 +75,6 @@ public class VertexArray
         glClearColor(0.3f, 0.4f, 0.1f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // Use our program
-        // shaderUtils.bind();
-
         // Bind the vertex array and enable our location
         glBindVertexArray(vaoID);
 
@@ -86,25 +83,18 @@ public class VertexArray
 
         // Disable our location
         glBindVertexArray(0);
-
-        // Un-bind our program
-//        shaderUtils.unbind();
     }
 
-    public void dispose()
+    public static void dispose()
     {
-        System.out.println("Disposing of vertex array");
+        for (int vao:allVAOs)
+        {
+            glDeleteVertexArrays(vao);
+        }
 
-        // Dispose the program
-        // shaderUtils.dispose();
-
-        // Dispose the vertex array
-        glBindVertexArray(0);
-        glDeleteVertexArrays(vaoID);
-
-        // Dispose the buffer object
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glDeleteBuffers(vboVertID);
-        glDeleteBuffers(vboTexID);
+        for (int vbo:allVBOs)
+        {
+            glDeleteBuffers(vbo);
+        }
     }
 }
