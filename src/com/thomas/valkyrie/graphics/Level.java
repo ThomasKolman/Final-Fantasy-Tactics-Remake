@@ -24,7 +24,7 @@ public class Level
         Shader.BG.enable();
         Background.create();
         background.uploadAsEntity();
-        Shader.BG.enable();
+        Shader.BG.disable();
     }
 
     private void createTiles()
@@ -35,7 +35,7 @@ public class Level
 
         for (int i = 0; i < 5 * 2; i++)
         {
-            increment += 0.01f;
+            increment += 0.1f;
             tile[i] = new Tile(increment + 0.0f, 0.0f, 1.0f);
             tile[i].uploadAsEntity();
         }
@@ -53,7 +53,7 @@ public class Level
         Shader.TILE.enable();
         for (int i = 0; i < 5 * 2; i++)
         {
-            tile[i].getEntity().render();
+            tile[i].getEntity().render("transformationMatrix");
         }
         Shader.TILE.disable();
     }

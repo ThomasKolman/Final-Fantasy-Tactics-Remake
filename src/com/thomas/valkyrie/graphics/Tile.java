@@ -12,7 +12,6 @@ import com.thomas.valkyrie.maths.Vector3f;
  */
 public class Tile
 {
-
     private Vector3f position = new Vector3f();
     private static VertexArray vertexArray;
     private static Texture texture;
@@ -23,7 +22,6 @@ public class Tile
         position.x = x;
         position.y = y;
         position.z = z;
-        Shader.TILE.setUniformMat4("transformationMatrix", Matrix4f.translate(position));
     }
 
     public static void create()
@@ -32,8 +30,8 @@ public class Tile
         float[] vertices = new float[]
                 {
                         -0.9f, 0.9f, 0.0f,
-                        -0.9f, 0.8f, 0.0f,
-                        -0.8f, 0.8f, 0.0f,
+                        -0.9f, 0.7f, 0.0f,
+                        -0.8f, 0.7f, 0.0f,
                         -0.8f, 0.9f, 0.0f
                 };
 

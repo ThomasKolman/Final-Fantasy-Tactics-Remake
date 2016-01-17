@@ -33,6 +33,14 @@ public class Entity
         texture.unbind();
     }
 
+    public void render(String uniformVariableName)
+    {
+        Shader.TILE.setUniformMat4(uniformVariableName, Matrix4f.translate(position));
+        texture.bind();
+        vertexArray.render();
+        texture.unbind();
+    }
+
     public void increasePosition(float dx, float dy, float dz)
     {
         this.position.x += dx;
