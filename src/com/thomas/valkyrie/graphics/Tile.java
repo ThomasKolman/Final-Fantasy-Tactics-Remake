@@ -32,13 +32,11 @@ public class Tile
         // The vertices of our Triangle
         float[] vertices = new float[]
                 {
-                        -0.9f, +0.9f, 0.0f,  // ID 0: Top left vertex
-                        -0.9f, +0.8f, 0.0f,  // ID 2: Bottom left vertex
-                        -0.8f, +0.9f, 0.0f,  // ID 1: Top right vertex
-                        -0.8f, +0.8f, 0.0f // ID 3: Bottom right vertex
+                        -0.9f, 0.9f, 0.0f,
+                        -0.9f, 0.8f, 0.0f,
+                        -0.8f, 0.8f, 0.0f,
+                        -0.8f, 0.9f, 0.0f
                 };
-
-
 
         float[] textureCoordinates = new float[]
                 {

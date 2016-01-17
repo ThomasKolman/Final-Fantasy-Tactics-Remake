@@ -25,8 +25,8 @@ public class Level
 
         for (int i = 0; i < 5 * 2; i++)
         {
-            increment += 0.01f;
-            tile[i] = new Tile(0.0f, 0.0f, 0.0f);
+            increment += 0.1f;
+            tile[i] = new Tile(increment + 0.0f, 0.0f, increment + 0.0f);
             tile[i].uploadAsEntity();
         }
     }
