@@ -56,7 +56,6 @@ public class Main implements Runnable
         thread.start();
 
         Shader.loadAll();
-        Shader.BG.enable();
 
         //grid = new Grid(0.0f, 0.0f, 0.0f);
         level = new Level();

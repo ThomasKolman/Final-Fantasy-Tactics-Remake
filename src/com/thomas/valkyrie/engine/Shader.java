@@ -25,8 +25,8 @@ public class Shader
 
     public static void loadAll()
     {
-        BG = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
-        TILE = new Shader("com/thomas/valkyrie/shaders/background.vert", "com/thomas/valkyrie/shaders/background.frag");
+        BG = new Shader("com/thomas/valkyrie/shaders/background.vert", "com/thomas/valkyrie/shaders/background.frag");
+        TILE = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
     }
 
     public int getUniformLocation(String name)

@@ -15,11 +15,11 @@ public class Background
     private static VertexArray vertexArray;
     private static Texture texture;
     private Vector3f vector3f = new Vector3f(0, 0, 0);
-    private Entity bgEntity;
+    private Entity entity;
 
     public Background()
     {
-        Shader.TILE.setUniformMat4("transformationMatrix", Matrix4f.translate(vector3f));
+
     }
 
     public static void create()
@@ -53,20 +53,11 @@ public class Background
 
     public void uploadAsEntity()
     {
-        bgEntity = new Entity(vertexArray, texture, vector3f, 0.0f, 0.0f, 0.0f, 0.0f);
-    }
-
-    public static VertexArray getVertexArray() {
-        return vertexArray;
-    }
-
-    public static Texture getTexture() {
-        return texture;
+        entity = new Entity(vertexArray, texture, vector3f, 0.0f, 0.0f, 0.0f, 0.0f);
     }
 
     public Entity getEntity()
     {
-
-        return bgEntity;
+        return entity;
     }
 }

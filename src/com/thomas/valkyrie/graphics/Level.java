@@ -21,41 +21,47 @@ public class Level
 
     public void createBackground()
     {
+        Shader.BG.enable();
         Background.create();
         background.uploadAsEntity();
+        Shader.BG.enable();
     }
 
     private void createTiles()
     {
+        Shader.TILE.enable();
         Tile.create();
         float increment = 0;
 
         for (int i = 0; i < 5 * 2; i++)
         {
             increment += 0.01f;
-            tile[i] = new Tile(0.0f, 0.0f, 1.0f);
+            tile[i] = new Tile(increment + 0.0f, 0.0f, 1.0f);
             tile[i].uploadAsEntity();
         }
+        Shader.TILE.disable();
     }
 
     public void render()
     {
         renderBackground();
-        Background.getTexture().unbind();
         renderTiles();
-        //Tile.getTexture().unbind();
     }
 
     public void renderTiles()
     {
+        Shader.TILE.enable();
         for (int i = 0; i < 5 * 2; i++)
         {
             tile[i].getEntity().render();
         }
+        Shader.TILE.disable();
     }
 
     public void renderBackground()
     {
+        Shader.BG.enable();
         background.getEntity().render();
+        Shader.BG.disable();
     }
 }

@@ -23,7 +23,7 @@ public class Tile
         position.x = x;
         position.y = y;
         position.z = z;
-        Shader.BG.setUniformMat4("transformationMatrix", Matrix4f.translate(position));
+        Shader.TILE.setUniformMat4("transformationMatrix", Matrix4f.translate(position));
     }
 
     public static void create()
@@ -64,13 +64,5 @@ public class Tile
     public Entity getEntity()
     {
         return entity;
-    }
-
-    public static VertexArray getVertexArray() {
-        return vertexArray;
-    }
-
-    public static Texture getTexture() {
-        return texture;
     }
 }
