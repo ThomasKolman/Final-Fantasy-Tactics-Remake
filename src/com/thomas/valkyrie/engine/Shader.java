@@ -4,6 +4,9 @@ import com.thomas.valkyrie.maths.Vector3f;
 import com.thomas.valkyrie.maths.Matrix4f;
 import com.thomas.valkyrie.utils.ShaderUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.lwjgl.opengl.GL20.*;
 
 /**
@@ -12,10 +15,10 @@ import static org.lwjgl.opengl.GL20.*;
 public class Shader
 {
     private int ID;
-    public static Shader BG;
+    public static Shader BG, PIPE, GRID;
     private int location_transformationMatrix;
 
-    public Shader(String vertex, String fragment)
+    private Shader(String vertex, String fragment)
     {
         ID = ShaderUtils.load(vertex, fragment);
     }
@@ -30,7 +33,7 @@ public class Shader
         return glGetUniformLocation(ID, name);
     }
 
-    public void getAllUniformLocation()
+    public void getAllUniformLocations()
     {
         location_transformationMatrix = getUniformLocation("transformationMatrix");
     }

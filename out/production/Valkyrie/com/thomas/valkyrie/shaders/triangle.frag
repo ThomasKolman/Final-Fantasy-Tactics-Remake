@@ -1,6 +1,6 @@
 #version 400 core
 
-out vec4 out_Color;
+layout (location = 0) out vec4 out_Color;
 
 in vec2 pass_textureCoordinates;
 

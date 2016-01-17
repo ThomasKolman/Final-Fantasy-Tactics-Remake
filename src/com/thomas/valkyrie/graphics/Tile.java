@@ -8,17 +8,26 @@ import com.thomas.valkyrie.maths.Matrix4f;
 import com.thomas.valkyrie.maths.Vector3f;
 
 /**
- * Created by Thomas on 2016-01-06.
+ * Created by Thomas on 2016-01-17.
  */
-public class Grid
+public class Tile
 {
-    private VertexArray vertexArray;
-    private Texture texture;
+
+    private Vector3f position = new Vector3f();
+    private Matrix4f tile_matrix;
+    private static VertexArray vertexArray;
+    private static Texture texture;
     private static Entity entity;
 
-    private Matrix4f grid_matrix;
+    public Tile(float x, float y, float z)
+    {
+        position.x = x;
+        position.y = y;
+        position.z = z;
+        Shader.BG.setUniformMat4("transformationMatrix", Matrix4f.translate(position));
+    }
 
-    public Grid(float x, float y, float z)
+    public static void create()
     {
         // The vertices of our Triangle
         float[] vertices = new float[]
@@ -44,18 +53,25 @@ public class Grid
                         3,1,2
                 };
 
-        Vector3f vector3f = new Vector3f(x, y, z);
-        grid_matrix = Matrix4f.translate(vector3f);
-        Shader.BG.setUniformMat4("transformationMatrix", Matrix4f.translate(vector3f));
-
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
         texture = new Texture("image");
-
-        entity = new Entity(vertexArray, texture, vector3f, 1.0f, 0.0f, 0.0f, 0.0f);
     }
 
-    public static Entity getEntity()
+    public void uploadAsEntity()
     {
-        return entity;
+        entity = new Entity(vertexArray, texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
+    }
+
+    public static VertexArray getVertexArray() {
+        return vertexArray;
+    }
+
+    public static Texture getTexture() {
+        return texture;
+    }
+
+    public Matrix4f getTile_matrix()
+    {
+        return tile_matrix;
     }
 }

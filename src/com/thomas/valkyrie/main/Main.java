@@ -1,11 +1,12 @@
 package com.thomas.valkyrie.main;
 
 import com.thomas.valkyrie.audio.Audio;
+import com.thomas.valkyrie.engine.Entity;
 import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Grid;
-import com.thomas.valkyrie.graphics.Pipe;
+import com.thomas.valkyrie.graphics.Level;
 import com.thomas.valkyrie.input.Input;
 import org.lwjgl.opengl.GL;
 
@@ -36,8 +37,9 @@ public class Main implements Runnable
 
     private Input input;
     private Grid grid;
-    private Pipe pipe;
+    private Level level;
     private Thread thread;
+    private Entity entity;
 
     /**
      * Hosts initial method calls and game loop
@@ -53,14 +55,13 @@ public class Main implements Runnable
         // Initializes program
         init();
 
-        Shader.BG.loadAll();
-        Shader.BG.enable();
-        grid = new Grid();
-
         thread = new Thread(this, "Game");
         thread.start();
 
-        grid.generateGrid();
+        Shader.loadAll();
+        Shader.BG.enable();
+
+        grid = new Grid(0.0f, 0.0f, 0.0f);
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -137,7 +138,8 @@ public class Main implements Runnable
         glClearColor(0.3f, 0.4f, 0.1f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        grid.render();
+        //Grid.getEntity().render();
+
     }
 
     /**

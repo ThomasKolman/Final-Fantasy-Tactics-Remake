@@ -59,16 +59,29 @@ public class VertexArray
         glBindVertexArray(0);
     }
 
-    public void render()
+    public void bind()
     {
         // Bind the vertex array and enable our location
         glBindVertexArray(vaoID);
+    }
 
-        // Draw a rectangle of 4 vertices, so it is 6 indices
-        glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_SHORT, 0);
-
+    public void unbind()
+    {
         // Disable our location
         glBindVertexArray(0);
+    }
+
+    public void draw()
+    {
+        // Draw a rectangle of 4 vertices, so it is 6 indices
+        glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_SHORT, 0);
+    }
+
+    public void render()
+    {
+        bind();
+        draw();
+        unbind();
     }
 
     public static void dispose()
