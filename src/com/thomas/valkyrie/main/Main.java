@@ -167,16 +167,16 @@ public class Main implements Runnable
         int height = (int) resolution.getHeight();
         int width = (int) resolution.getWidth();
 
-//        if (height < width)
-//        {
-//            //noinspection SuspiciousNameCombination
-//            width = height;
-//        }
-//        else
-//        {
-//            //noinspection SuspiciousNameCombination
-//            height = width;
-//        }
+        if (height < width)
+        {
+            //noinspection SuspiciousNameCombination
+            width = height;
+        }
+        else
+        {
+            //noinspection SuspiciousNameCombination
+            height = width;
+        }
 
         // Creates window that resizes itself to fullscreen,
         // has no title text, and will only be shared on one monitor
