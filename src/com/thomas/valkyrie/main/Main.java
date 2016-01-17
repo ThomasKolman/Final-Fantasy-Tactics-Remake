@@ -7,6 +7,7 @@ import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Grid;
 import com.thomas.valkyrie.graphics.Level;
+import com.thomas.valkyrie.graphics.Tile;
 import com.thomas.valkyrie.input.Input;
 import org.lwjgl.opengl.GL;
 
@@ -61,7 +62,8 @@ public class Main implements Runnable
         Shader.loadAll();
         Shader.BG.enable();
 
-        grid = new Grid(0.0f, 0.0f, 0.0f);
+        //grid = new Grid(0.0f, 0.0f, 0.0f);
+        level = new Level();
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -138,8 +140,7 @@ public class Main implements Runnable
         glClearColor(0.3f, 0.4f, 0.1f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        //Grid.getEntity().render();
-
+        level.render();
     }
 
     /**

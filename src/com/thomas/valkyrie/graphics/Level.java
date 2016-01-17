@@ -21,13 +21,21 @@ public class Level
     private void createTiles()
     {
         Tile.create();
-        int increment = 0;
+        float increment = 0;
 
-        for (int i = 0; i < 5 * 2; i += 2)
+        for (int i = 0; i < 5 * 2; i++)
         {
-            increment += 0.001f;
+            increment += 0.01f;
             tile[i] = new Tile(0.0f, 0.0f, 0.0f);
             tile[i].uploadAsEntity();
+        }
+    }
+
+    public void render()
+    {
+        for (int i = 0; i < 5 * 2; i++)
+        {
+            tile[i].getEntity().render();
         }
     }
 

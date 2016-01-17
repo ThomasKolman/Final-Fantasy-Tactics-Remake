@@ -17,7 +17,7 @@ public class Tile
     private Matrix4f tile_matrix;
     private static VertexArray vertexArray;
     private static Texture texture;
-    private static Entity entity;
+    private Entity entity;
 
     public Tile(float x, float y, float z)
     {
@@ -32,11 +32,13 @@ public class Tile
         // The vertices of our Triangle
         float[] vertices = new float[]
                 {
-                        -0.5f, 0.5f, 0.0f,
-                        -0.5f, -0.5f, 0.0f,
-                        0.5f, -0.5f, 0.0f,
-                        0.5f, 0.5f, 0.0f
+                        -0.9f, +0.9f, 0.0f,  // ID 0: Top left vertex
+                        -0.9f, +0.8f, 0.0f,  // ID 2: Bottom left vertex
+                        -0.8f, +0.9f, 0.0f,  // ID 1: Top right vertex
+                        -0.8f, +0.8f, 0.0f // ID 3: Bottom right vertex
                 };
+
+
 
         float[] textureCoordinates = new float[]
                 {
@@ -60,6 +62,11 @@ public class Tile
     public void uploadAsEntity()
     {
         entity = new Entity(vertexArray, texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
+    }
+
+    public Entity getEntity()
+    {
+        return entity;
     }
 
     public static VertexArray getVertexArray() {
