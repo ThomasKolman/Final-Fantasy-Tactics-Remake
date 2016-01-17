@@ -10,31 +10,26 @@ import com.thomas.valkyrie.maths.Vector3f;
 /**
  * Created by Thomas on 2016-01-17.
  */
-public class Tile
+public class Background
 {
-
-    private Vector3f position = new Vector3f();
     private static VertexArray vertexArray;
     private static Texture texture;
-    private Entity entity;
+    private Vector3f vector3f = new Vector3f(0, 0, 0);
+    private Entity bgEntity;
 
-    public Tile(float x, float y, float z)
+    public Background()
     {
-        position.x = x;
-        position.y = y;
-        position.z = z;
-        Shader.BG.setUniformMat4("transformationMatrix", Matrix4f.translate(position));
+        Shader.TILE.setUniformMat4("transformationMatrix", Matrix4f.translate(vector3f));
     }
 
     public static void create()
     {
-        // The vertices of our Triangle
         float[] vertices = new float[]
                 {
-                        -0.9f, 0.9f, 0.0f,
-                        -0.9f, 0.8f, 0.0f,
-                        -0.8f, 0.8f, 0.0f,
-                        -0.8f, 0.9f, 0.0f
+                        -1.0f, 1.0f, 0.0f,
+                        -1.0f, -1.0f, 0.0f,
+                        1.0f, -1.0f, 0.0f,
+                        1.0f, 1.0f, 0.0f
                 };
 
         float[] textureCoordinates = new float[]
@@ -53,17 +48,12 @@ public class Tile
                 };
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
-        texture = new Texture("image.png");
+        texture = new Texture("download.png");
     }
 
     public void uploadAsEntity()
     {
-        entity = new Entity(vertexArray, texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
-    }
-
-    public Entity getEntity()
-    {
-        return entity;
+        bgEntity = new Entity(vertexArray, texture, vector3f, 0.0f, 0.0f, 0.0f, 0.0f);
     }
 
     public static VertexArray getVertexArray() {
@@ -72,5 +62,11 @@ public class Tile
 
     public static Texture getTexture() {
         return texture;
+    }
+
+    public Entity getEntity()
+    {
+
+        return bgEntity;
     }
 }

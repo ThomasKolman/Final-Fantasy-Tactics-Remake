@@ -28,9 +28,9 @@ public class Entity
 
     public void render()
     {
-        Shader.BG.setUniformMat4("transformationMatrix", Matrix4f.translate(position));
-        vertexArray.render();
         texture.bind();
+        vertexArray.render();
+        texture.unbind();
     }
 
     public void increasePosition(float dx, float dy, float dz)

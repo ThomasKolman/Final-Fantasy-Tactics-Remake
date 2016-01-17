@@ -1,13 +1,10 @@
 package com.thomas.valkyrie.main;
 
-import com.thomas.valkyrie.audio.Audio;
 import com.thomas.valkyrie.engine.Entity;
 import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
-import com.thomas.valkyrie.graphics.Grid;
 import com.thomas.valkyrie.graphics.Level;
-import com.thomas.valkyrie.graphics.Tile;
 import com.thomas.valkyrie.input.Input;
 import org.lwjgl.opengl.GL;
 
@@ -37,7 +34,6 @@ public class Main implements Runnable
     private long windowID;
 
     private Input input;
-    private Grid grid;
     private Level level;
     private Thread thread;
     private Entity entity;
@@ -87,7 +83,7 @@ public class Main implements Runnable
 
     public void run()
     {
-        Audio.loadMP3File("ZHU - FADED");
+//        Audio.loadMP3File("ZHU - FADED");
 
         while (true)
         {
@@ -172,16 +168,16 @@ public class Main implements Runnable
         int height = (int) resolution.getHeight();
         int width = (int) resolution.getWidth();
 
-        if (height < width)
-        {
-            //noinspection SuspiciousNameCombination
-            width = height;
-        }
-        else
-        {
-            //noinspection SuspiciousNameCombination
-            height = width;
-        }
+//        if (height < width)
+//        {
+//            //noinspection SuspiciousNameCombination
+//            width = height;
+//        }
+//        else
+//        {
+//            //noinspection SuspiciousNameCombination
+//            height = width;
+//        }
 
         // Creates window that resizes itself to fullscreen,
         // has no title text, and will only be shared on one monitor
