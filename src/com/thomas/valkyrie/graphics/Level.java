@@ -39,7 +39,7 @@ public class Level
             for (int j = 0; j < 9; j++)
             {
                 tile[i][j] = new Tile(xIncrement + 0.0f, yIncrement + 0.0f, 1.0f);
-                tile[i][j].uploadAsEntity();
+                tile[i][j].uploadAsEntity(tile[i][j].randomTextureGeneration());
                 xIncrement += 0.2f;
             }
             xIncrement = 0.0f;

@@ -5,14 +5,15 @@ import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Level;
-import com.thomas.valkyrie.input.Input;
-import org.lwjgl.glfw.GLFWVidMode;
+import com.thomas.valkyrie.input.Keyboard;
+import com.thomas.valkyrie.input.MouseClick;
+import com.thomas.valkyrie.input.MousePosition;
+import com.thomas.valkyrie.input.MouseScroll;
+import com.thomas.valkyrie.logic.Pathfinding;
 import org.lwjgl.opengl.GL;
-import org.lwjgl.system.libffi.Closure;
 
 import java.awt.Toolkit;
 import java.awt.Dimension;
-import java.nio.ByteBuffer;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -36,7 +37,11 @@ public class Main implements Runnable
 {
     private long windowID;
 
-    private Input input;
+    private Keyboard keyboard;
+    private MouseClick mouseClick;
+    private MousePosition mousePosition;
+    private MouseScroll mouseScroll;
+
     private Level level;
     private Thread thread;
     private Entity entity;
@@ -117,13 +122,17 @@ public class Main implements Runnable
      * @param delta takes in FPS time
      */
     private void update(float delta) {
-        if (Input.isKeyDown(GLFW_KEY_SPACE))
+        if (Keyboard.isKeyDown(GLFW_KEY_SPACE))
         {
             System.out.println(delta);
         }
-        else if (Input.isKeyDown(GLFW_KEY_ESCAPE))
+        else if (Keyboard.isKeyDown(GLFW_KEY_ESCAPE))
         {
             end();
+        }
+        else if (MouseClick.isMouseDown(GLFW_MOUSE_BUTTON_1))
+        {
+            System.out.println("haha");
         }
     }
 
@@ -200,8 +209,11 @@ public class Main implements Runnable
         glfwSwapInterval(1);
 
         // Sets event listener for the new window
-        input = new Input();
-        glfwSetKeyCallback(windowID, input);
+        keyboard = new Keyboard();
+        mouseClick = new MouseClick();
+
+        glfwSetKeyCallback(windowID, keyboard);
+        glfwSetMouseButtonCallback(windowID, mouseClick);
 
         // Prints out OpenGL version being used
         System.out.println(glGetString(GL_VERSION));
