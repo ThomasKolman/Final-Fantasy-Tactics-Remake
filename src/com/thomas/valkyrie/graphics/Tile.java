@@ -1,5 +1,6 @@
 package com.thomas.valkyrie.graphics;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import com.thomas.valkyrie.engine.Entity;
 import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.Texture;
@@ -15,16 +16,52 @@ import java.util.Random;
 public class Tile
 {
     private Vector3f position = new Vector3f();
+    private Entity entity;
+
     private static VertexArray vertexArray;
     private static Texture grass_texture;
     private static Texture dirt_texture;
-    private Entity entity;
+    private static Texture stone_texture;
 
-    public Tile(float x, float y, float z)
+    public Tile(float x, float y, float z, int i, int j)
     {
         position.x = x;
         position.y = y;
         position.z = z;
+
+        entity = new Entity(vertexArray, randomTextureGeneration(i, j), position, 0.0f, 0.0f, 0.0f, 0.0f);
+    }
+
+    public Texture randomTextureGeneration(int i, int j)
+    {
+        double random = Math.random();
+
+        if (i > 0 && i < 8 && j > 0 && j < 8)
+        {
+            if (random < 0.2)
+            {
+                return dirt_texture;
+            }
+            else if (random > 0.2 && random < 0.4)
+            {
+                return stone_texture;
+            }
+            else
+            {
+                return grass_texture;
+            }
+        }
+        else
+        {
+            if (random < 0.2)
+            {
+                return dirt_texture;
+            }
+            else
+            {
+                return grass_texture;
+            }
+        }
     }
 
     public static void create()
@@ -56,23 +93,7 @@ public class Tile
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
         grass_texture = new Texture("tile_grass.png");
         dirt_texture = new Texture("dirt.png");
-    }
-
-    public void uploadAsEntity(Texture texture)
-    {
-        entity = new Entity(vertexArray, texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
-    }
-
-    public Texture randomTextureGeneration()
-    {
-        if (Math.random() < 0.3)
-        {
-            return dirt_texture;
-        }
-        else
-        {
-            return grass_texture;
-        }
+        stone_texture = new Texture("stone.jpg");
     }
 
     public Entity getEntity()

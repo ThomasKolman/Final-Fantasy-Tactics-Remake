@@ -1,30 +1,39 @@
 package com.thomas.valkyrie.graphics;
 
 import com.thomas.valkyrie.engine.Entity;
-import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
-import com.thomas.valkyrie.maths.Matrix4f;
 import com.thomas.valkyrie.maths.Vector3f;
 
 /**
- * Created by Thomas on 2016-01-17.
+ * Created by Thomas on 2016-01-18.
  */
-public class Background
+public class Character
 {
-    private static VertexArray vertexArray;
-    private static Texture texture;
-    private Vector3f vector3f = new Vector3f(0, 0, 0);
+    private Vector3f position = new Vector3f();
     private Entity entity;
+
+    private static VertexArray vertexArray;
+    private static Texture character_Texture;
+
+    public Character(float x, float y, float z)
+    {
+        position.x = x;
+        position.y = y;
+        position.z = z;
+
+        entity = new Entity(vertexArray, character_Texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
+    }
 
     public static void create()
     {
+// The vertices of our Triangle
         float[] vertices = new float[]
                 {
-                        -1.0f, 1.0f, 0.0f,
-                        -1.0f, -1.0f, 0.0f,
-                        1.0f, -1.0f, 0.0f,
-                        1.0f, 1.0f, 0.0f
+                        -0.9f, 0.9f, 0.0f,
+                        -0.9f, 0.7f, 0.0f,
+                        -0.7f, 0.7f, 0.0f,
+                        -0.7f, 0.9f, 0.0f
                 };
 
         float[] textureCoordinates = new float[]
@@ -43,16 +52,10 @@ public class Background
                 };
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
-        texture = new Texture("background.png");
+        character_Texture = new Texture("black_mage.png");
     }
 
-    public void uploadAsEntity()
-    {
-        entity = new Entity(vertexArray, texture, vector3f, 0.0f, 0.0f, 0.0f, 0.0f);
-    }
-
-    public Entity getEntity()
-    {
+    public Entity getEntity() {
         return entity;
     }
 }

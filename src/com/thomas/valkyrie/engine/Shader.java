@@ -15,7 +15,7 @@ import static org.lwjgl.opengl.GL20.*;
 public class Shader
 {
     private int ID;
-    public static Shader BG, TILE;
+    public static Shader BG, TILE, CHARACTER;
     private int location_transformationMatrix;
 
     private Shader(String vertex, String fragment)
@@ -27,6 +27,7 @@ public class Shader
     {
         BG = new Shader("com/thomas/valkyrie/shaders/background.vert", "com/thomas/valkyrie/shaders/background.frag");
         TILE = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
+        CHARACTER = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
     }
 
     public int getUniformLocation(String name)

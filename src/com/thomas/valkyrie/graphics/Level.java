@@ -12,11 +12,13 @@ public class Level
 {
     private Tile[][] tile = new Tile[9][9];
     private Background background = new Background();
+    Character character;
 
     public Level()
     {
         createBackground();
         createTiles();
+        createCharacter();
     }
 
     public void createBackground()
@@ -31,6 +33,7 @@ public class Level
     {
         Shader.TILE.enable();
         Tile.create();
+
         float xIncrement = 0.0f;
         float yIncrement = 0.0f;
 
@@ -38,8 +41,7 @@ public class Level
         {
             for (int j = 0; j < 9; j++)
             {
-                tile[i][j] = new Tile(xIncrement + 0.0f, yIncrement + 0.0f, 1.0f);
-                tile[i][j].uploadAsEntity(tile[i][j].randomTextureGeneration());
+                tile[i][j] = new Tile(xIncrement + 0.0f, yIncrement + 0.0f, 1.0f, i, j);
                 xIncrement += 0.2f;
             }
             xIncrement = 0.0f;
@@ -49,10 +51,19 @@ public class Level
         Shader.TILE.disable();
     }
 
+    public void createCharacter()
+    {
+        Shader.CHARACTER.enable();
+        Character.create();
+        character = new Character(0.0f, 0.0f, 0.0f);
+        Shader.CHARACTER.disable();
+    }
+
     public void render()
     {
         renderBackground();
         renderTiles();
+        renderCharacter();
     }
 
     public void renderTiles()
@@ -73,5 +84,12 @@ public class Level
         Shader.BG.enable();
         background.getEntity().render();
         Shader.BG.disable();
+    }
+
+    public void renderCharacter()
+    {
+        Shader.CHARACTER.enable();
+        character.getEntity().render("transformationMatrix");
+        Shader.CHARACTER.disable();
     }
 }

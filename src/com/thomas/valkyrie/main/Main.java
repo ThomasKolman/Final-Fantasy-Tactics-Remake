@@ -208,6 +208,9 @@ public class Main implements Runnable
         GL.createCapabilities();
         glfwSwapInterval(1);
 
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
         // Sets event listener for the new window
         keyboard = new Keyboard();
         mouseClick = new MouseClick();
