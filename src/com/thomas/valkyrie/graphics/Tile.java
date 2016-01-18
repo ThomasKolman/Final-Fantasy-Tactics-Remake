@@ -31,8 +31,8 @@ public class Tile
                 {
                         -0.9f, 0.9f, 0.0f,
                         -0.9f, 0.7f, 0.0f,
-                        -0.8f, 0.7f, 0.0f,
-                        -0.8f, 0.9f, 0.0f
+                        -0.7f, 0.7f, 0.0f,
+                        -0.7f, 0.9f, 0.0f
                 };
 
         float[] textureCoordinates = new float[]

@@ -6,10 +6,13 @@ import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Level;
 import com.thomas.valkyrie.input.Input;
+import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.system.libffi.Closure;
 
 import java.awt.Toolkit;
 import java.awt.Dimension;
+import java.nio.ByteBuffer;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -167,16 +170,18 @@ public class Main implements Runnable
         int height = (int) resolution.getHeight();
         int width = (int) resolution.getWidth();
 
-        if (height < width)
-        {
-            //noinspection SuspiciousNameCombination
-            width = height;
-        }
-        else
-        {
-            //noinspection SuspiciousNameCombination
-            height = width;
-        }
+        System.out.println(width + "   " + height);
+
+//        if (height < width)
+//        {
+//            //noinspection SuspiciousNameCombination
+//            width = height;
+//        }
+//        else
+//        {
+//            //noinspection SuspiciousNameCombination
+//            height = width;
+//        }
 
         // Creates window that resizes itself to fullscreen,
         // has no title text, and will only be shared on one monitor

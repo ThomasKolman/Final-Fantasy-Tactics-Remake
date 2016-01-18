@@ -35,10 +35,11 @@ public class Level
 
         for (int i = 0; i < 5 * 2; i++)
         {
-            increment += 0.1f;
             tile[i] = new Tile(increment + 0.0f, 0.0f, 1.0f);
             tile[i].uploadAsEntity();
+            increment += 0.2f;
         }
+
         Shader.TILE.disable();
     }
 
