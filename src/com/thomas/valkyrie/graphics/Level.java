@@ -10,7 +10,7 @@ import com.thomas.valkyrie.maths.Matrix4f;
  */
 public class Level
 {
-    private Tile[] tile = new Tile[5 * 2];
+    private Tile[][] tile = new Tile[9][9];
     private Background background = new Background();
 
     public Level()
@@ -31,13 +31,19 @@ public class Level
     {
         Shader.TILE.enable();
         Tile.create();
-        float increment = 0;
+        float xIncrement = 0.0f;
+        float yIncrement = 0.0f;
 
-        for (int i = 0; i < 5 * 2; i++)
+        for (int i = 0; i < 9; i++)
         {
-            tile[i] = new Tile(increment + 0.0f, 0.0f, 1.0f);
-            tile[i].uploadAsEntity();
-            increment += 0.2f;
+            for (int j = 0; j < 9; j++)
+            {
+                tile[i][j] = new Tile(xIncrement + 0.0f, yIncrement + 0.0f, 1.0f);
+                tile[i][j].uploadAsEntity();
+                xIncrement += 0.2f;
+            }
+            xIncrement = 0.0f;
+            yIncrement -= 0.2f;
         }
 
         Shader.TILE.disable();
@@ -52,9 +58,12 @@ public class Level
     public void renderTiles()
     {
         Shader.TILE.enable();
-        for (int i = 0; i < 5 * 2; i++)
+        for (int i = 0; i < 9; i++)
         {
-            tile[i].getEntity().render("transformationMatrix");
+            for (int j = 0; j < 9; j++)
+            {
+                tile[i][j].getEntity().render("transformationMatrix");
+            }
         }
         Shader.TILE.disable();
     }

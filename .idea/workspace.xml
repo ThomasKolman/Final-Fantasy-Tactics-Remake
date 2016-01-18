@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a658bd5-dff2-4e26-9f2d-e18d7069217b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Valkyrie/com/thomas/valkyrie/main/Main.class" afterPath="$PROJECT_DIR$/out/production/Valkyrie/com/thomas/valkyrie/main/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Level.java" afterPath="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Level.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java" afterPath="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thomas/valkyrie/main/Main.java" afterPath="$PROJECT_DIR$/src/com/thomas/valkyrie/main/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thomas/valkyrie/maths/Vector3f.java" afterPath="$PROJECT_DIR$/src/com/thomas/valkyrie/maths/Vector3f.java" />
     </list>
     <ignored path="Valkyrie.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tile.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Tile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="42" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.18639798">
+              <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -79,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Level.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Level.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Level.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.91435766">
-              <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,16 +93,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="174" column="10" selection-start-line="174" selection-start-column="10" selection-end-line="183" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="triangle.frag" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/shaders/triangle.frag">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -158,10 +145,10 @@
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/BaseGraphics.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Background.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/engine/Entity.java" />
-        <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/maths/Vector3f.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/main/Main.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Level.java" />
+        <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java" />
       </list>
     </option>
   </component>
@@ -311,6 +298,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Valkyrie" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Valkyrie" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -621,7 +622,13 @@
       <option name="project" value="LOCAL" />
       <updated>1453073915251</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fixed rendering errors">
+      <created>1453081023486</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1453081023486</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -684,7 +691,8 @@
     <MESSAGE value="Fixed texture errors" />
     <MESSAGE value="Fixed uniform variable errors" />
     <MESSAGE value="Changed window dimensions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed window dimensions" />
+    <MESSAGE value="Fixed rendering errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed rendering errors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -815,14 +823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Background.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -839,21 +839,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Background.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="42" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+          <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Level.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.91435766">
-          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18639798">
+          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>

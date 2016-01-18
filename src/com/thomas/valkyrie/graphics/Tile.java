@@ -51,7 +51,7 @@ public class Tile
                 };
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
-        texture = new Texture("image.png");
+        texture = new Texture("tile_grass.png");
     }
 
     public void uploadAsEntity()
