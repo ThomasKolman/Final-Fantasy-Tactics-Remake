@@ -1,5 +1,6 @@
 package com.thomas.valkyrie.main;
 
+import com.thomas.valkyrie.characters.BlackMage;
 import com.thomas.valkyrie.engine.Entity;
 import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.Texture;
@@ -9,6 +10,8 @@ import com.thomas.valkyrie.input.Keyboard;
 import com.thomas.valkyrie.input.MouseClick;
 import com.thomas.valkyrie.input.MousePosition;
 import com.thomas.valkyrie.input.MouseScroll;
+import com.thomas.valkyrie.logic.Graph;
+import com.thomas.valkyrie.logic.Movement;
 import com.thomas.valkyrie.logic.Pathfinding;
 import org.lwjgl.opengl.GL;
 
@@ -67,6 +70,9 @@ public class Main implements Runnable
 
         //grid = new Grid(0.0f, 0.0f, 0.0f);
         level = new Level();
+
+        Graph graph = new Graph(2, 1, 5, 4);
+        Graph graph2 = new Graph(5, 4, 2, 1);
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)

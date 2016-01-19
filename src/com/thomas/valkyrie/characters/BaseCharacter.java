@@ -8,4 +8,9 @@ public class BaseCharacter
     protected int health;
     protected int meleeAttack;
     protected int mobility;
+
+    protected void move()
+    {
+
+    }
 }

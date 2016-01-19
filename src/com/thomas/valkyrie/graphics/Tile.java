@@ -8,6 +8,7 @@ import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.maths.Matrix4f;
 import com.thomas.valkyrie.maths.Vector3f;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -22,6 +23,8 @@ public class Tile
     private static Texture grass_texture;
     private static Texture dirt_texture;
     private static Texture stone_texture;
+
+    private int countInpassableNodes = 0;
 
     public Tile(float x, float y, float z, int i, int j)
     {
@@ -44,6 +47,7 @@ public class Tile
             }
             else if (random > 0.2 && random < 0.4)
             {
+                countInpassableNodes += 1;
                 return stone_texture;
             }
             else
@@ -99,5 +103,10 @@ public class Tile
     public Entity getEntity()
     {
         return entity;
+    }
+
+    public int getCountInpassableNodes()
+    {
+        return countInpassableNodes;
     }
 }
