@@ -15,8 +15,7 @@ import com.thomas.valkyrie.logic.Movement;
 import com.thomas.valkyrie.logic.Pathfinding;
 import org.lwjgl.opengl.GL;
 
-import java.awt.Toolkit;
-import java.awt.Dimension;
+import java.awt.*;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -138,7 +137,18 @@ public class Main implements Runnable
         }
         else if (MouseClick.isMouseDown(GLFW_MOUSE_BUTTON_1))
         {
-            System.out.println("haha");
+            boolean check = false;
+            System.out.println(MousePosition.getxCartesian());
+            if (MousePosition.getxCartesian() > -0.9f && MousePosition.getxCartesian() < -0.7f)
+            {
+                check = true;
+                if (MousePosition.getyCartesian() > 0.7f && MousePosition.getyCartesian() < 0.9f)
+                {
+
+                }
+            }
+
+            System.out.println(check);
         }
     }
 
@@ -220,12 +230,18 @@ public class Main implements Runnable
         // Sets event listener for the new window
         keyboard = new Keyboard();
         mouseClick = new MouseClick();
+        mousePosition = new MousePosition();
 
         glfwSetKeyCallback(windowID, keyboard);
         glfwSetMouseButtonCallback(windowID, mouseClick);
+        glfwSetCursorPosCallback(windowID, mousePosition);
 
         // Prints out OpenGL version being used
         System.out.println(glGetString(GL_VERSION));
+    }
+
+    public long getWindowID() {
+        return windowID;
     }
 
     /**
