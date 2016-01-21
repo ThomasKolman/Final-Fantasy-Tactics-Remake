@@ -27,8 +27,7 @@ public class Character
 
     public static void create()
     {
-// The vertices of our Triangle
-        float[] vertices = new float[]
+        final float[] vertices = new float[]
                 {
                         -0.9f, 0.9f, 0.0f,
                         -0.9f, 0.7f, 0.0f,
@@ -36,7 +35,7 @@ public class Character
                         -0.7f, 0.9f, 0.0f
                 };
 
-        float[] textureCoordinates = new float[]
+        final float[] textureCoordinates = new float[]
                 {
                         0, 0,   //VO
                         0, 1,   //V1
@@ -45,7 +44,7 @@ public class Character
                 };
 
         // The indices that form the rectangle
-        short[] indices = new short[]
+        final short[] indices = new short[]
                 {
                         0,1,3,
                         3,1,2

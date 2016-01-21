@@ -7,7 +7,7 @@ import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
  */
 public class MouseScroll
 {
-    public static boolean[] keys = new boolean[65536];
+    private static boolean[] keys = new boolean[65536];
 
     public void invoke(long window, double xoffset, double yoffset)
     {

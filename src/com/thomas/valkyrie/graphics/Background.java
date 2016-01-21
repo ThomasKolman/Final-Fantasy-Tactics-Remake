@@ -19,7 +19,7 @@ public class Background
 
     public static void create()
     {
-        float[] vertices = new float[]
+        final float[] vertices = new float[]
                 {
                         -1.0f, 1.0f, 0.0f,
                         -1.0f, -1.0f, 0.0f,
@@ -27,7 +27,7 @@ public class Background
                         1.0f, 1.0f, 0.0f
                 };
 
-        float[] textureCoordinates = new float[]
+        final float[] textureCoordinates = new float[]
                 {
                         0, 0,   //VO
                         0, 1,   //V1
@@ -36,7 +36,7 @@ public class Background
                 };
 
         // The indices that form the rectangle
-        short[] indices = new short[]
+        final short[] indices = new short[]
                 {
                         0,1,3,
                         3,1,2

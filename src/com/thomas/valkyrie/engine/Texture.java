@@ -13,11 +13,26 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Loads and renders textures in the /res folder, and handles
+ * disposal of textures
+ *
+ * <p> Code is heavily copied and cited from various sources </p>
+ *
+ * @author Thomas Kolman
+ * @since 2015-12-18
+ */
 public class Texture
 {
     private int texture;
     private static List<Integer> allTextures = new ArrayList<Integer>();
 
+    /**
+     * Loads texture through specified path and returns relevant
+     * ID associated with texture
+     *
+     * @param path
+     */
     public Texture(String path)
     {
         texture = load(path);
@@ -26,9 +41,11 @@ public class Texture
     /**
      * Loads texture and changes format to suit OpenGL texturing
      *
-     * CITED CODE : https://www.youtube.com/watch?v=9XpYo6UTMZ4&feature=youtu.be
+     * <p> All images must be 2^ in size (dividable by 4) </p>
      *
-     * @param path
+     * <p> CITED CODE : https://www.youtube.com/watch?v=9XpYo6UTMZ4&feature=youtu.be </p>
+     *
+     * @param path takes in path of image to be loaded
      * @return
      */
     private int load(String path)
@@ -74,16 +91,28 @@ public class Texture
         return result;
     }
 
+    /**
+     * Binds relevant texture to OpenGL
+     */
     public void bind()
     {
         glBindTexture(GL_TEXTURE_2D, texture);
     }
 
+    /**
+     * Unbinds relevant texture to OpenGL
+     */
     public void unbind()
     {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
+    /**
+     * Disposes of all texture IDs. Used to free driver memory
+     * after program termination.
+     *
+     * @see com.thomas.valkyrie.main.Main disposal method
+     */
     public static void dispose()
     {
         for (int texture:allTextures)

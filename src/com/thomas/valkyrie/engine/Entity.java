@@ -26,6 +26,7 @@ public class Entity
     private Vector3f position;
     private float rotX, rotY, rotZ;
     private float scale;
+    private Vector3f rotational_position;
 
     /**
      * Sets all entity data to class-level variables before rendering

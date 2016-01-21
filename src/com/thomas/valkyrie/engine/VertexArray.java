@@ -24,6 +24,13 @@ public class VertexArray
     private int vaoID, vboVertID, vboTexID, iboID;
     private int count;
 
+    /**
+     * Creates new vertex array for OpenGL to process
+     *
+     * @param vertices takes in vertex position data
+     * @param textureCoordinates takes in texture coordinate positions
+     * @param indices
+     */
     public VertexArray(float[] vertices, float[] textureCoordinates, short[] indices)
     {
         count = indices.length;

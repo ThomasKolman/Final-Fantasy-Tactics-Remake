@@ -1,15 +1,7 @@
 package com.thomas.valkyrie.graphics;
 
 import com.thomas.valkyrie.engine.Shader;
-import com.thomas.valkyrie.engine.Texture;
-import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.logic.Movement;
-import com.thomas.valkyrie.maths.Matrix4f;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Thomas on 2016-01-16.

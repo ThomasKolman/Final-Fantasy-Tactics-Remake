@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class Movement
 {
-    private static Byte[][] grid = new Byte[9][9];
+    final private static Byte[][] grid = new Byte[9][9];
     private static List<Integer> xMovableNodes = new ArrayList<>();
     private static List<Integer> yMovableNodes = new ArrayList<>();
 

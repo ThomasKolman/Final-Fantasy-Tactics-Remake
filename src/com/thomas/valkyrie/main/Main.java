@@ -73,14 +73,8 @@ public class Main implements Runnable
         thread = new Thread(this, "Game");
         thread.start();
 
-        // Loads all public shader classes
-        //Shader.loadAll();
-
         //grid = new Grid(0.0f, 0.0f, 0.0f);
         level = new Level();
-
-        Graph graph = new Graph(2, 1, 5, 4);
-        Graph graph2 = new Graph(5, 4, 2, 1);
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
