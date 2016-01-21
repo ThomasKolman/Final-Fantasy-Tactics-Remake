@@ -62,9 +62,11 @@ public class Main implements Runnable
         // Initializes program
         init();
 
+        // Starts audio
         thread = new Thread(this, "Game");
         thread.start();
 
+        // Loads all public shader classes
         Shader.loadAll();
 
         //grid = new Grid(0.0f, 0.0f, 0.0f);

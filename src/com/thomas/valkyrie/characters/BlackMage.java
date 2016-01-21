@@ -17,7 +17,6 @@ public class BlackMage extends BaseCharacter
     @Override
     public void move()
     {
-        Movement.checkMovementSpace(mobility);
 
     }
 }

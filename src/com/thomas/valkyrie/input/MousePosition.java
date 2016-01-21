@@ -32,10 +32,10 @@ public class MousePosition extends GLFWCursorPosCallback
         this.xCartesian = xCartesian;
         this.yCartesian = yCartesian;
 
-        System.out.println("Pixel: " + xpos);
-        System.out.println("Pixel: " + ypos);
-        System.out.println("xCartesian: " + xCartesian);
-        System.out.println("yCartesian: " + yCartesian);
+//        System.out.println("Pixel: " + xpos);
+//        System.out.println("Pixel: " + ypos);
+//        System.out.println("xCartesian: " + xCartesian);
+//        System.out.println("yCartesian: " + yCartesian);
     }
 
     public static double getxCartesian() {

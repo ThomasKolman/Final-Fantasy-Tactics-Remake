@@ -13,6 +13,11 @@ public class Graph
     private int targetXPos;
     private int targetYPos;
 
+    public Graph()
+    {
+
+    }
+
     public Graph(int xPos, int yPos, int targetXPos, int targetYPos)
     {
         this.targetXPos = targetXPos;
@@ -42,7 +47,7 @@ public class Graph
         }
     }
 
-    private int calculateHeuristic(int xPos, int yPos)
+    public int calculateHeuristic(int xPos, int yPos)
     {
         // Calculates the Manhattan distance between starting point and target point
         int heuristic = Math.abs(xPos - targetXPos) + Math.abs(yPos - targetYPos);
