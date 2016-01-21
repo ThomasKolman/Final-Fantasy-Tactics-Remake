@@ -1,8 +1,16 @@
+/**
+ * This codebase is the source code for Final Fantasy Tactics Advance Remastered, jointly created
+ * by Thomas Kolman and Nawab Ali. The game self-identifies as a turn-based strategy game that pits
+ * two players together against each other on a grid. Every player has the right to pick their own
+ * party. The objective of the game is to wipe out the other players party.
+ *
+ * This class handles all the main processes that take up the game, including the initial setup, the
+ * game loop, and the disposal of resources allocated during the game
+ */
+
 package com.thomas.valkyrie.main;
 
-import com.thomas.valkyrie.characters.BlackMage;
 import com.thomas.valkyrie.engine.Entity;
-import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.graphics.Level;
@@ -11,8 +19,6 @@ import com.thomas.valkyrie.input.MouseClick;
 import com.thomas.valkyrie.input.MousePosition;
 import com.thomas.valkyrie.input.MouseScroll;
 import com.thomas.valkyrie.logic.Graph;
-import com.thomas.valkyrie.logic.Movement;
-import com.thomas.valkyrie.logic.Pathfinding;
 import org.lwjgl.opengl.GL;
 
 import java.awt.*;
@@ -23,17 +29,14 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 /**
- * Created by Thomas on 2015-12-13.
- *
- * This class has been equally contributed to by Thomas Kolman and Nawab Ali
- *
- * This codebase is the source code for Final Fantasy Tactics Advance Remastered, jointly created
- * by Thomas Kolman and Nawab Ali. The game self-identifies as a turn-based strategy game that pits
- * two players together against each other on a grid. Every player has the right to pick their own
- * party. The objective of the game is to wipe out the other players party.
- *
  * This class handles all the main processes that take up the game, including the initial setup, the
  * game loop, and the disposal of resources allocated during the game
+ *
+ * <p> This class has been equally contributed to by Thomas Kolman and Nawab Ali </p>
+ *
+ * @author Thomas Kolman
+ * @author Nawab Ali
+ * @since 1.0 (beta)
  */
 public class Main implements Runnable
 {
@@ -49,7 +52,11 @@ public class Main implements Runnable
     private Entity entity;
 
     /**
-     * Hosts initial method calls and game loop
+     * Hosts game loop. The game loop calculates the frame delta, renders the objects
+     * and updates the game logic/input.
+     *
+     * <p> Hosts initialization calls to OpenGL and GLFW to set up windowing and context
+     * creation </p>
      *
      * <p> Method runs indefinitely until program execution ends </p>
      */
@@ -67,7 +74,7 @@ public class Main implements Runnable
         thread.start();
 
         // Loads all public shader classes
-        Shader.loadAll();
+        //Shader.loadAll();
 
         //grid = new Grid(0.0f, 0.0f, 0.0f);
         level = new Level();
@@ -95,6 +102,13 @@ public class Main implements Runnable
         end();
     }
 
+    /**
+     * Sets new thread to play any audio. The audio in encased within
+     * a never-ending loop that plays a consistent song, and checks
+     * for any new sounds to be played
+     *
+     * @see com.thomas.valkyrie.audio.Audio
+     */
     public void run()
     {
 //        Audio.loadMP3File("ZHU - FADED");
@@ -169,11 +183,11 @@ public class Main implements Runnable
     }
 
     /**
-     * Initializes GLFW window processes and OpenGL states
+     * Initializes GLFW window processes and OpenGL states. Catches
+     * all window creation exceptions and sets input callbacks to take
+     * in mouse, keyboard and cursor position data.
      *
      * <p> Creates new window </p>
-     *
-     * <p> Handles failed window creation attempts </p>
      *
      * <p> Sets GLContext to this thread </p>
      */
@@ -198,17 +212,6 @@ public class Main implements Runnable
         int width = (int) resolution.getWidth();
 
         System.out.println(width + "   " + height);
-
-//        if (height < width)
-//        {
-//            //noinspection SuspiciousNameCombination
-//            width = height;
-//        }
-//        else
-//        {
-//            //noinspection SuspiciousNameCombination
-//            height = width;
-//        }
 
         // Creates window that resizes itself to fullscreen,
         // has no title text, and will only be shared on one monitor
@@ -242,14 +245,10 @@ public class Main implements Runnable
         System.out.println(glGetString(GL_VERSION));
     }
 
-    public long getWindowID() {
-        return windowID;
-    }
+
 
     /**
      * Called when program begins execution
-     *
-     * <p> Immediately calls start method </p>
      *
      * @param args takes in command line arguments
      */

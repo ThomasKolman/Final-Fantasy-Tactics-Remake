@@ -15,20 +15,17 @@ import static org.lwjgl.opengl.GL20.*;
 public class Shader
 {
     private int ID;
-    public static Shader BG, TILE, CHARACTER, INDICATOR;
+
+    public final static Shader BG = new Shader("com/thomas/valkyrie/shaders/background.vert", "com/thomas/valkyrie/shaders/background.frag");
+    public final static Shader TILE = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
+    public final static Shader CHARACTER = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
+    public final static Shader INDICATOR = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
+
     private int location_transformationMatrix;
 
     private Shader(String vertex, String fragment)
     {
         ID = ShaderUtils.load(vertex, fragment);
-    }
-
-    public static void loadAll()
-    {
-        BG = new Shader("com/thomas/valkyrie/shaders/background.vert", "com/thomas/valkyrie/shaders/background.frag");
-        TILE = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
-        CHARACTER = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
-        INDICATOR = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
     }
 
     public int getUniformLocation(String name)
