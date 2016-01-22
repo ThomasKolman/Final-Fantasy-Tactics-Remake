@@ -13,12 +13,11 @@ package com.thomas.valkyrie.main;
 import com.thomas.valkyrie.engine.Entity;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
-import com.thomas.valkyrie.graphics.Level;
 import com.thomas.valkyrie.input.Keyboard;
 import com.thomas.valkyrie.input.MouseClick;
 import com.thomas.valkyrie.input.MousePosition;
 import com.thomas.valkyrie.input.MouseScroll;
-import com.thomas.valkyrie.logic.Graph;
+import com.thomas.valkyrie.level.Jagd;
 import org.lwjgl.opengl.GL;
 
 import java.awt.*;
@@ -47,7 +46,7 @@ public class Main implements Runnable
     private MousePosition mousePosition;
     private MouseScroll mouseScroll;
 
-    private Level level;
+    private Jagd jagd;
     private Thread thread;
     private Entity entity;
 
@@ -74,7 +73,7 @@ public class Main implements Runnable
         thread.start();
 
         //grid = new Grid(0.0f, 0.0f, 0.0f);
-        level = new Level();
+        jagd = new Jagd();
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -173,7 +172,7 @@ public class Main implements Runnable
         glClearColor(0.3f, 0.4f, 0.1f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        level.render();
+        jagd.render();
     }
 
     /**
