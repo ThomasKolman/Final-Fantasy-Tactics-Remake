@@ -15,6 +15,9 @@ import java.util.List;
  */
 public class Jagd
 {
+    final public int rows = 18;
+    final public int columns = 18;
+
     // Static graphics
     private Tile[][] tile = new Tile[18][18];
     private Background background = new Background();
