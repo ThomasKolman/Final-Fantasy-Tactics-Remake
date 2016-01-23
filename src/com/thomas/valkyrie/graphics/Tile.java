@@ -39,7 +39,7 @@ public class Tile
     {
         double random = Math.random();
 
-        if (i > 0 && i < 8 && j > 0 && j < 8)
+        if (i > 3 && i < 14 && j > 3 && j < 14)
         {
             if (random < 0.2)
             {
@@ -74,9 +74,9 @@ public class Tile
         final float[] vertices = new float[]
                 {
                         -0.9f, 0.9f, 0.0f,
-                        -0.9f, 0.7f, 0.0f,
-                        -0.7f, 0.7f, 0.0f,
-                        -0.7f, 0.9f, 0.0f
+                        -0.9f, 0.8f, 0.0f,
+                        -0.8f, 0.8f, 0.0f,
+                        -0.8f, 0.9f, 0.0f
                 };
 
         final float[] textureCoordinates = new float[]

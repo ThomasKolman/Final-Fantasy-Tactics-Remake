@@ -16,7 +16,7 @@ import java.util.List;
 public class Jagd
 {
     // Static graphics
-    private Tile[][] tile = new Tile[9][9];
+    private Tile[][] tile = new Tile[18][18];
     private Background background = new Background();
     private Character character;
 
@@ -47,15 +47,15 @@ public class Jagd
         float xIncrement = 0.0f;
         float yIncrement = 0.0f;
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < tile[0].length; i++)
         {
-            for (int j = 0; j < 9; j++)
+            for (int j = 0; j < tile[1].length; j++)
             {
                 tile[i][j] = new Tile(xIncrement + 0.0f, yIncrement + 0.0f, 1.0f, i, j);
-                xIncrement += 0.2f;
+                xIncrement += 0.1f;
             }
             xIncrement = 0.0f;
-            yIncrement -= 0.2f;
+            yIncrement -= 0.1f;
         }
 
         Shader.TILE.disable();
@@ -97,9 +97,9 @@ public class Jagd
     public void renderTiles()
     {
         Shader.TILE.enable();
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < tile[0].length; i++)
         {
-            for (int j = 0; j < 9; j++)
+            for (int j = 0; j < tile[1].length; j++)
             {
                 tile[i][j].getEntity().render("transformationMatrix");
             }

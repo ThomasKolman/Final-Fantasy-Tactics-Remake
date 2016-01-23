@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5a658bd5-dff2-4e26-9f2d-e18d7069217b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Character.java" afterPath="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Character.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java" afterPath="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/thomas/valkyrie/level/Jagd.java" afterPath="$PROJECT_DIR$/src/com/thomas/valkyrie/level/Jagd.java" />
     </list>
     <ignored path="Valkyrie.iws" />
@@ -25,14 +27,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Jagd.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Jagd.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/level/Jagd.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.2670026">
-              <caret line="123" column="21" selection-start-line="123" selection-start-column="21" selection-end-line="123" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1453508005168" expanded="true" signature="3147:3202" placeholder="..." />
+                <marker date="1453508296682" expanded="true" signature="3201:3256" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -62,7 +64,17 @@
         <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Character.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Character.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.34256926">
+              <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -128,9 +140,7 @@
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/engine/Entity.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/engine/Texture.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/engine/VertexArray.java" />
-        <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Indicators.java" />
-        <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Character.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Background.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/input/MouseClick.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/input/MouseScroll.java" />
@@ -140,6 +150,8 @@
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Level.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/main/Main.java" />
         <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/level/Jagd.java" />
+        <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java" />
+        <option value="$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Character.java" />
       </list>
     </option>
   </component>
@@ -649,7 +661,13 @@
       <option name="project" value="LOCAL" />
       <updated>1453503660302</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Worked on indicator graphics">
+      <created>1453508029427</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1453508029427</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -730,7 +748,8 @@
     <MESSAGE value="Added code comments" />
     <MESSAGE value="Refactored code" />
     <MESSAGE value="Rearranged level class into a new package" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rearranged level class into a new package" />
+    <MESSAGE value="Worked on indicator graphics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Worked on indicator graphics" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -747,7 +766,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1453508005168" expanded="true" signature="3147:3202" placeholder="..." />
+            <marker date="1453508296682" expanded="true" signature="3201:3256" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1031,13 +1050,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2141058">
-          <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/input/MouseClick.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22921914">
@@ -1082,10 +1094,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/engine/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1098,22 +1110,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/engine/Entity.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/level/Jagd.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1453508296682" expanded="true" signature="3201:3256" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Tile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/level/Jagd.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thomas/valkyrie/graphics/Character.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.2670026">
-          <caret line="123" column="21" selection-start-line="123" selection-start-column="21" selection-end-line="123" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1453508005168" expanded="true" signature="3147:3202" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.34256926">
+          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
