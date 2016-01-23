@@ -5,7 +5,7 @@ import com.thomas.valkyrie.graphics.Background;
 import com.thomas.valkyrie.graphics.Character;
 import com.thomas.valkyrie.graphics.Indicators;
 import com.thomas.valkyrie.graphics.Tile;
-import com.thomas.valkyrie.logic.Movement;
+import com.thomas.valkyrie.logic.Map;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +15,15 @@ import java.util.List;
  */
 public class Jagd
 {
-    final public int rows = 18;
-    final public int columns = 18;
+    // Constants
+    final private int row = 18;
+    final private int column = 18;
+
+    // Logic
+    private Map map = new Map(row, column);
 
     // Static graphics
-    private Tile[][] tile = new Tile[18][18];
+    private Tile[][] tile = new Tile[row][column];
     private Background background = new Background();
     private Character character;
 
@@ -75,7 +79,6 @@ public class Jagd
     public void createIndicator()
     {
         Shader.INDICATOR.enable();
-        Movement.checkMovementSpace(3, 0, 0);
         // TODO
         Shader.INDICATOR.disable();
     }

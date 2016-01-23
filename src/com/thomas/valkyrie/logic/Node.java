@@ -3,18 +3,21 @@ package com.thomas.valkyrie.logic;
 /**
  * Created by Thomas on 2016-01-23.
  */
-public class Node<Heuristic, XPosition, YPosition> extends Map
+public class Node
 {
-    final public Heuristic heuristic;
-    final public XPosition xPosition;
-    final public YPosition yPosition;
+    private int heuristic;
 
-    public Node(Heuristic heuristic, XPosition xPosition, YPosition yPosition)
+    final private int xPosition;
+    final private int yPosition;
+
+    public Node(int xPosition, int yPosition)
     {
-        super((Integer) heuristic, (Integer) xPosition, (Integer) yPosition);
-
-        this.heuristic = heuristic;
         this.xPosition = xPosition;
         this.yPosition = yPosition;
+    }
+
+    public void changeHeuristic(int heuristic)
+    {
+
     }
 }
