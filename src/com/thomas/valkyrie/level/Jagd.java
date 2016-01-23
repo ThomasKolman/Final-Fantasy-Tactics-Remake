@@ -7,15 +7,21 @@ import com.thomas.valkyrie.graphics.Indicators;
 import com.thomas.valkyrie.graphics.Tile;
 import com.thomas.valkyrie.logic.Movement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Thomas on 2016-01-21.
  */
 public class Jagd
 {
+    // Static graphics
     private Tile[][] tile = new Tile[9][9];
     private Background background = new Background();
     private Character character;
-    private Indicators indicators;
+
+    // Dynamic graphics
+    private List<Indicators> indicators = new ArrayList<>();
 
     public Jagd()
     {
@@ -67,17 +73,15 @@ public class Jagd
     {
         Shader.INDICATOR.enable();
         Movement.checkMovementSpace(3, 0, 0);
-        int[][] xyMovableNodeCoords = new int[Movement.getxMovableNodes().size()][Movement.getyMovableNodes().size()];
+        List<Integer> xNodes = new ArrayList<>(Movement.getxMovableNodes());
+        List<Integer> yNodes = new ArrayList<>(Movement.getyMovableNodes());
+
+        for (int i = 0; i < xNodes.size(); i++)
+        {
+            indicators.add(new Indicators(0.0f, 0.0f, 0.0f));
+        }
 
         Indicators.create();
-
-        for (float i = 0.0f; i < xyMovableNodeCoords[0].length / 10; i += 0.2f)
-        {
-            for (float j = 0; j < xyMovableNodeCoords[1].length / 10; j += 0.2f)
-            {
-                indicators = new Indicators(i + 0.0f, 0.0f - j, 0.0f);
-            }
-        }
 
         Shader.INDICATOR.disable();
     }
@@ -86,7 +90,7 @@ public class Jagd
     {
         renderBackground();
         renderTiles();
-        renderIndicator();
+        //renderIndicator();
         renderCharacter();
     }
 
@@ -123,7 +127,7 @@ public class Jagd
     public void renderIndicator()
     {
         Shader.INDICATOR.enable();
-        indicators.getEntity().render("transformationMatrix");
+//        indicators.getEntity().render("transformationMatrix");
         Shader.INDICATOR.disable();
     }
 }
