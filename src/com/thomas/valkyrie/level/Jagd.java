@@ -73,16 +73,7 @@ public class Jagd
     {
         Shader.INDICATOR.enable();
         Movement.checkMovementSpace(3, 0, 0);
-        List<Integer> xNodes = new ArrayList<>(Movement.getxMovableNodes());
-        List<Integer> yNodes = new ArrayList<>(Movement.getyMovableNodes());
-
-        for (int i = 0; i < xNodes.size(); i++)
-        {
-            indicators.add(new Indicators(0.0f, 0.0f, 0.0f));
-        }
-
-        Indicators.create();
-
+        // TODO
         Shader.INDICATOR.disable();
     }
 
@@ -127,7 +118,7 @@ public class Jagd
     public void renderIndicator()
     {
         Shader.INDICATOR.enable();
-//        indicators.getEntity().render("transformationMatrix");
+        // TODO
         Shader.INDICATOR.disable();
     }
 }
