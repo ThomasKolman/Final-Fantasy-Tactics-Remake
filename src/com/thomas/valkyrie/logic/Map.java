@@ -18,7 +18,7 @@ public class Map
         // Fills nodeMap objects with positional data
         for (int i = 0; i < nodeMap[0].length; i++)
         {
-            for (int j = 0; j < nodeMap[1].length; i++)
+            for (int j = 0; j < nodeMap[1].length; j++)
             {
                 nodeMap[i][j] = new Node(i, j);
             }
@@ -32,7 +32,7 @@ public class Map
     {
         for (int i = 0; i < nodeMap[0].length; i++)
         {
-            for (int j = 0; j < nodeMap[1].length; i++)
+            for (int j = 0; j < nodeMap[1].length; j++)
             {
                 nodeMap[i][j].changeHeuristic(calculateManhattanDistance(xPos, yPos, i, j));
             }

@@ -35,11 +35,18 @@ public class Tile
         entity = new Entity(vertexArray, randomTextureGeneration(i, j), position, 0.0f, 0.0f, 0.0f, 0.0f);
     }
 
+    /**
+     * NEEDS TO BE MOVED
+     *
+     * @param i
+     * @param j
+     * @return
+     */
     public Texture randomTextureGeneration(int i, int j)
     {
         double random = Math.random();
 
-        if (i > 3 && i < 14 && j > 3 && j < 14)
+        if (i > 1 && i < 10 && j > 1 && j < 10)
         {
             if (random < 0.2)
             {

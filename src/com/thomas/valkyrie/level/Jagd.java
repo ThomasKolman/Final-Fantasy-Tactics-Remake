@@ -1,10 +1,8 @@
 package com.thomas.valkyrie.level;
 
 import com.thomas.valkyrie.engine.Shader;
-import com.thomas.valkyrie.graphics.Background;
+import com.thomas.valkyrie.graphics.*;
 import com.thomas.valkyrie.graphics.Character;
-import com.thomas.valkyrie.graphics.Indicators;
-import com.thomas.valkyrie.graphics.Tile;
 import com.thomas.valkyrie.logic.Map;
 
 import java.util.ArrayList;
@@ -16,16 +14,19 @@ import java.util.List;
 public class Jagd
 {
     // Constants
-    final private int row = 18;
-    final private int column = 18;
+    final static public int row = 12;
+    final static public int column = 12;
 
     // Logic
     private Map map = new Map(row, column);
 
     // Static graphics
     private Tile[][] tile = new Tile[row][column];
+    private Image[] image  = new Image[4];
+    private Healthbar[] healthbar = new Healthbar[4];
     private Background background = new Background();
     private Character character;
+    private Menu menu;
 
     // Dynamic graphics
     private List<Indicators> indicators = new ArrayList<>();
@@ -35,7 +36,19 @@ public class Jagd
         createBackground();
         createTiles();
         createCharacter();
-        createIndicator();
+        createImage();
+        createHealthbar();
+        createMenu();
+    }
+
+    public void render()
+    {
+        renderBackground();
+        renderTiles();
+        renderCharacter();
+        renderImage();
+        renderHealthBar();
+        renderMenu();
     }
 
     public void createBackground()
@@ -76,19 +89,44 @@ public class Jagd
         Shader.CHARACTER.disable();
     }
 
-    public void createIndicator()
+    public void createImage()
     {
-        Shader.INDICATOR.enable();
-        // TODO
-        Shader.INDICATOR.disable();
+        Shader.IMAGE.enable();
+        Image.create();
+
+        float xIncrement = 0.0f;
+
+        for (int i = 0; i < image.length; i++)
+        {
+            image[i] = new Image(xIncrement + 0.0f, 0.0f, 1.0f);
+            xIncrement += 0.45;
+        }
+
+        Shader.IMAGE.disable();
     }
 
-    public void render()
+    public void createHealthbar()
     {
-        renderBackground();
-        renderTiles();
-        //renderIndicator();
-        renderCharacter();
+        Shader.HEALTHBAR.enable();
+        Healthbar.create();
+
+        float xIncrement = 0.0f;
+
+        for (int i = 0; i < healthbar.length; i++)
+        {
+            healthbar[i] = new Healthbar(xIncrement + 0.0f, 0.0f, 1.0f);
+            xIncrement += 0.45;
+        }
+
+        Shader.HEALTHBAR.disable();
+    }
+
+    public void createMenu()
+    {
+        Shader.MENU.enable();
+        Menu.create();
+        menu = new Menu(0.0f, 0.0f, 0.0f);
+        Shader.MENU.disable();
     }
 
     public void renderTiles()
@@ -121,10 +159,31 @@ public class Jagd
         Shader.CHARACTER.disable();
     }
 
-    public void renderIndicator()
+    public void renderImage()
     {
-        Shader.INDICATOR.enable();
-        // TODO
-        Shader.INDICATOR.disable();
+        Shader.IMAGE.enable();
+
+        for (int i = 0; i < image.length; i++)
+        {
+            image[i].getEntity().render("transformationMatrix");
+        }
+        Shader.IMAGE.disable();
+    }
+
+    public void renderHealthBar()
+    {
+        Shader.HEALTHBAR.enable();
+        for (int i = 0; i < healthbar.length; i++)
+        {
+            healthbar[i].getEntity().render("transformationMatrix");
+        }
+        Shader.HEALTHBAR.disable();
+    }
+
+    public void renderMenu()
+    {
+        Shader.MENU.enable();
+        menu.getEntity().render("transformationMatrix");
+        Shader.MENU.disable();
     }
 }

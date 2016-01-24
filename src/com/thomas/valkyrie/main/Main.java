@@ -136,11 +136,7 @@ public class Main implements Runnable
      * @param delta takes in FPS time
      */
     private void update(float delta) {
-        if (Keyboard.isKeyDown(GLFW_KEY_SPACE))
-        {
-            System.out.println(delta);
-        }
-        else if (Keyboard.isKeyDown(GLFW_KEY_ESCAPE))
+        if (Keyboard.isKeyDown(GLFW_KEY_ESCAPE))
         {
             end();
         }
@@ -159,6 +155,8 @@ public class Main implements Runnable
 
             System.out.println(check);
         }
+
+
     }
 
     /**
