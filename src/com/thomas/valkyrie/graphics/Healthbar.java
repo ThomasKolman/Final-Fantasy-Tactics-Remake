@@ -12,6 +12,7 @@ public class Healthbar
 {
     private Vector3f position = new Vector3f();
     private Entity entity;
+
     private static VertexArray vertexArray;
     private static Texture healthbar_texture;
 

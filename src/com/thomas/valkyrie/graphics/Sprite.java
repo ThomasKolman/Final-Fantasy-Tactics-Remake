@@ -25,6 +25,11 @@ public class Sprite
         entity = new Entity(vertexArray, character_Texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
     }
 
+    public Entity getEntity()
+    {
+        return entity;
+    }
+
     public static void create()
     {
         final float[] vertices = new float[]
@@ -52,9 +57,5 @@ public class Sprite
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
         character_Texture = new Texture("black_mage.png");
-    }
-
-    public Entity getEntity() {
-        return entity;
     }
 }

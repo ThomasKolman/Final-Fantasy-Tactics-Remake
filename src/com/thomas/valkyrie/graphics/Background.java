@@ -12,14 +12,20 @@ import com.thomas.valkyrie.maths.Vector3f;
  */
 public class Background
 {
-    private static VertexArray vertexArray;
-    private static Texture texture;
     private Vector3f vector3f = new Vector3f(0, 0, 0);
     private Entity entity;
+
+    private static VertexArray vertexArray;
+    private static Texture texture;
 
     public Background()
     {
         entity = new Entity(vertexArray, texture, vector3f, 0.0f, 0.0f, 0.0f, 0.0f);
+    }
+
+    public Entity getEntity()
+    {
+        return entity;
     }
 
     public static void create()
@@ -49,10 +55,5 @@ public class Background
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
         texture = new Texture("background.png");
-    }
-
-    public Entity getEntity()
-    {
-        return entity;
     }
 }

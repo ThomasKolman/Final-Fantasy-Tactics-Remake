@@ -50,7 +50,6 @@ public class Main implements Runnable
     private Jagd jagd;
     private UI ui;
     private Thread thread;
-    private Entity entity;
 
     /**
      * Hosts game loop. The game loop calculates the frame delta, renders the objects

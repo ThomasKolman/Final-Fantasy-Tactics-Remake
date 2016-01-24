@@ -24,8 +24,6 @@ public class Tile
     private static Texture dirt_texture;
     private static Texture stone_texture;
 
-    private int countInpassableNodes = 0;
-
     public Tile(float x, float y, float z, String texture)
     {
         position.x = x;
@@ -44,6 +42,11 @@ public class Tile
                         entity = new Entity(vertexArray, stone_texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
                         break;
                 }
+    }
+
+    public Entity getEntity()
+    {
+        return entity;
     }
 
     public static void create()
@@ -76,15 +79,5 @@ public class Tile
         grass_texture = new Texture("tile_grass.png");
         dirt_texture = new Texture("dirt.png");
         stone_texture = new Texture("stone.jpg");
-    }
-
-    public Entity getEntity()
-    {
-        return entity;
-    }
-
-    public int getCountInpassableNodes()
-    {
-        return countInpassableNodes;
     }
 }
