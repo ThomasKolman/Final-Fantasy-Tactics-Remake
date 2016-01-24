@@ -10,14 +10,9 @@ import java.util.List;
 /**
  * Created by Thomas on 2016-01-21.
  */
-public class Jagd
+public class Jagd extends BaseLevel
 {
     // Constants
-    final static public int row = 12;
-    final static public int column = 12;
-
-    // Logic
-    private Map map = new Map(row, column);
 
     // Static graphics
     private Tile[][] tile = new Tile[row][column];
@@ -32,6 +27,8 @@ public class Jagd
      */
     public Jagd()
     {
+        super(12, 12);
+
         createBackground();
         createTiles();
         createCharacter();

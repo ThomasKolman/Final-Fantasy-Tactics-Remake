@@ -20,12 +20,11 @@ import com.thomas.valkyrie.input.MouseClick;
 import com.thomas.valkyrie.input.MousePosition;
 import com.thomas.valkyrie.input.MouseScroll;
 import com.thomas.valkyrie.level.Jagd;
+import com.thomas.valkyrie.logic.Logic;
 import com.thomas.valkyrie.utils.FileUtils;
 import org.lwjgl.opengl.GL;
 
 import java.awt.*;
-import java.util.*;
-import java.util.List;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -44,9 +43,6 @@ import static org.lwjgl.system.MemoryUtil.NULL;
  */
 public class Main implements Runnable
 {
-    final public static Character[] character = new Character[4];
-    final public static BaseCharacter[] baseCharacter = new BaseCharacter[4];
-
     private long windowID;
 
     private Keyboard keyboard;
@@ -56,6 +52,7 @@ public class Main implements Runnable
 
     private Jagd jagd;
     private UI ui;
+    private Logic logic;
     private Thread thread;
 
     /**
@@ -76,7 +73,7 @@ public class Main implements Runnable
         // Initializes program
         initGLFW();
 
-        initData();
+        logic = new Logic();
 
         // Starts audio
         thread = new Thread(this, "Game");
@@ -84,8 +81,6 @@ public class Main implements Runnable
 
         jagd = new Jagd();
         ui = new UI();
-
-        System.out.println(baseCharacter[2].health);
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -184,37 +179,6 @@ public class Main implements Runnable
 
         jagd.render();
         ui.render();
-    }
-
-    public void initData()
-    {
-        int[] chosenCharacters = new int[4];
-        chosenCharacters = FileUtils.getStartupData();
-
-        for (int i = 0; i < chosenCharacters.length; i++)
-        {
-            Object object;
-
-            switch (chosenCharacters[i])
-            {
-                case 0 :
-                    baseCharacter[i] = new BlackMage();
-                    break;
-
-                case 1 :
-                    baseCharacter[i] = new BlackMage();
-                    break;
-
-                case 2 :
-                    baseCharacter[i] = new BlackMage();
-                    break;
-
-                case 3 :
-                    baseCharacter[i] = new BlackMage();
-                    break;
-
-            }
-        }
     }
 
     /**
