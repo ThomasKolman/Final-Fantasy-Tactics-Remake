@@ -18,7 +18,7 @@ public class Shader
 
     final public static Shader BG = new Shader("com/thomas/valkyrie/shaders/background.vert", "com/thomas/valkyrie/shaders/background.frag");
     final public static Shader TILE = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
-    final public static Shader CHARACTER = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
+    final public static Shader SPRITE = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
     final public static Shader INDICATOR = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
     final public static Shader MENU = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");
     final public static Shader HEALTHBAR = new Shader("com/thomas/valkyrie/shaders/triangle.vert", "com/thomas/valkyrie/shaders/triangle.frag");

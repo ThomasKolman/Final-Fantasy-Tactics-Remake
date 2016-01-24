@@ -10,6 +10,7 @@
 
 package com.thomas.valkyrie.main;
 
+import com.thomas.valkyrie.UI.UI;
 import com.thomas.valkyrie.engine.Entity;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
@@ -47,6 +48,7 @@ public class Main implements Runnable
     private MouseScroll mouseScroll;
 
     private Jagd jagd;
+    private UI ui;
     private Thread thread;
     private Entity entity;
 
@@ -72,8 +74,8 @@ public class Main implements Runnable
         thread = new Thread(this, "Game");
         thread.start();
 
-        //grid = new Grid(0.0f, 0.0f, 0.0f);
         jagd = new Jagd();
+        ui = new UI();
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -171,6 +173,7 @@ public class Main implements Runnable
         glClear(GL_COLOR_BUFFER_BIT);
 
         jagd.render();
+        ui.render();
     }
 
     /**

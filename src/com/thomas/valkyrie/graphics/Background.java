@@ -17,6 +17,11 @@ public class Background
     private Vector3f vector3f = new Vector3f(0, 0, 0);
     private Entity entity;
 
+    public Background()
+    {
+        entity = new Entity(vertexArray, texture, vector3f, 0.0f, 0.0f, 0.0f, 0.0f);
+    }
+
     public static void create()
     {
         final float[] vertices = new float[]
@@ -44,11 +49,6 @@ public class Background
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
         texture = new Texture("background.png");
-    }
-
-    public void uploadAsEntity()
-    {
-        entity = new Entity(vertexArray, texture, vector3f, 0.0f, 0.0f, 0.0f, 0.0f);
     }
 
     public Entity getEntity()

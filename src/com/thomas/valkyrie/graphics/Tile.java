@@ -26,53 +26,24 @@ public class Tile
 
     private int countInpassableNodes = 0;
 
-    public Tile(float x, float y, float z, int i, int j)
+    public Tile(float x, float y, float z, String texture)
     {
         position.x = x;
         position.y = y;
         position.z = z;
 
-        entity = new Entity(vertexArray, randomTextureGeneration(i, j), position, 0.0f, 0.0f, 0.0f, 0.0f);
-    }
-
-    /**
-     * NEEDS TO BE MOVED
-     *
-     * @param i
-     * @param j
-     * @return
-     */
-    public Texture randomTextureGeneration(int i, int j)
-    {
-        double random = Math.random();
-
-        if (i > 1 && i < 10 && j > 1 && j < 10)
-        {
-            if (random < 0.2)
-            {
-                return dirt_texture;
-            }
-            else if (random > 0.2 && random < 0.4)
-            {
-                countInpassableNodes += 1;
-                return stone_texture;
-            }
-            else
-            {
-                return grass_texture;
-            }
-        }
-        else
-        {
-            if (random < 0.2)
-            {
-                return dirt_texture;
-            }
-            else
-            {
-                return grass_texture;
-            }
-        }
+        switch (texture)
+                {
+                    case "grass_texture" :
+                        entity = new Entity(vertexArray, grass_texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
+                        break;
+                    case "dirt_texture" :
+                        entity = new Entity(vertexArray, dirt_texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
+                        break;
+                    case "stone_texture" :
+                        entity = new Entity(vertexArray, stone_texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
+                        break;
+                }
     }
 
     public static void create()

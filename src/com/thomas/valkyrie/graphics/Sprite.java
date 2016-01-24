@@ -6,9 +6,9 @@ import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.maths.Vector3f;
 
 /**
- * Created by Thomas on 2016-01-18.
+ * Created by Thomas on 2016-01-23.
  */
-public class Character
+public class Sprite
 {
     private Vector3f position = new Vector3f();
     private Entity entity;
@@ -16,7 +16,7 @@ public class Character
     private static VertexArray vertexArray;
     private static Texture character_Texture;
 
-    public Character(float x, float y, float z)
+    public Sprite(float x, float y, float z)
     {
         position.x = x;
         position.y = y;

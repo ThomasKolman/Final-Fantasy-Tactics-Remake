@@ -2,7 +2,6 @@ package com.thomas.valkyrie.level;
 
 import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.graphics.*;
-import com.thomas.valkyrie.graphics.Character;
 import com.thomas.valkyrie.logic.Map;
 
 import java.util.ArrayList;
@@ -22,23 +21,20 @@ public class Jagd
 
     // Static graphics
     private Tile[][] tile = new Tile[row][column];
-    private Image[] image  = new Image[4];
-    private Healthbar[] healthbar = new Healthbar[4];
-    private Background background = new Background();
-    private Character character;
-    private Menu menu;
+    private Background background;
+    private Sprite sprite;
 
     // Dynamic graphics
     private List<Indicators> indicators = new ArrayList<>();
 
+    /**
+     * Constructs game field
+     */
     public Jagd()
     {
         createBackground();
         createTiles();
         createCharacter();
-        createImage();
-        createHealthbar();
-        createMenu();
     }
 
     public void render()
@@ -46,16 +42,13 @@ public class Jagd
         renderBackground();
         renderTiles();
         renderCharacter();
-        renderImage();
-        renderHealthBar();
-        renderMenu();
     }
 
     public void createBackground()
     {
         Shader.BG.enable();
         Background.create();
-        background.uploadAsEntity();
+        background = new Background();
         Shader.BG.disable();
     }
 
@@ -71,7 +64,37 @@ public class Jagd
         {
             for (int j = 0; j < tile[1].length; j++)
             {
-                tile[i][j] = new Tile(xIncrement + 0.0f, yIncrement + 0.0f, 1.0f, i, j);
+                String texture;
+                double random = Math.random();
+
+                if (i > 1 && i < 10 && j > 1 && j < 10)
+                {
+                    if (random < 0.2)
+                    {
+                        texture = "dirt_texture";
+                    }
+                    else if (random > 0.2 && random < 0.4)
+                    {
+                        texture = "stone_texture";
+                    }
+                    else
+                    {
+                        texture = "grass_texture";
+                    }
+                }
+                else
+                {
+                    if (random < 0.2)
+                    {
+                        texture = "dirt_texture";
+                    }
+                    else
+                    {
+                        texture = "grass_texture";
+                    }
+                }
+
+                tile[i][j] = new Tile(xIncrement + 0.0f, yIncrement + 0.0f, 1.0f, texture);
                 xIncrement += 0.1f;
             }
             xIncrement = 0.0f;
@@ -83,50 +106,10 @@ public class Jagd
 
     public void createCharacter()
     {
-        Shader.CHARACTER.enable();
-        Character.create();
-        character = new Character(0.0f, 0.0f, 1.0f);
-        Shader.CHARACTER.disable();
-    }
-
-    public void createImage()
-    {
-        Shader.IMAGE.enable();
-        Image.create();
-
-        float xIncrement = 0.0f;
-
-        for (int i = 0; i < image.length; i++)
-        {
-            image[i] = new Image(xIncrement + 0.0f, 0.0f, 1.0f);
-            xIncrement += 0.45;
-        }
-
-        Shader.IMAGE.disable();
-    }
-
-    public void createHealthbar()
-    {
-        Shader.HEALTHBAR.enable();
-        Healthbar.create();
-
-        float xIncrement = 0.0f;
-
-        for (int i = 0; i < healthbar.length; i++)
-        {
-            healthbar[i] = new Healthbar(xIncrement + 0.0f, 0.0f, 1.0f);
-            xIncrement += 0.45;
-        }
-
-        Shader.HEALTHBAR.disable();
-    }
-
-    public void createMenu()
-    {
-        Shader.MENU.enable();
-        Menu.create();
-        menu = new Menu(0.0f, 0.0f, 0.0f);
-        Shader.MENU.disable();
+        Shader.SPRITE.enable();
+        Sprite.create();
+        sprite = new Sprite(0.0f, 0.0f, 1.0f);
+        Shader.SPRITE.disable();
     }
 
     public void renderTiles()
@@ -151,39 +134,10 @@ public class Jagd
 
     public void renderCharacter()
     {
-        Shader.CHARACTER.enable();
-        character.getEntity().render("transformationMatrix");
-        character.getEntity().increasePosition(0.1f, 0.0f, 0.0f);
-
-        character.getEntity().increasePosition(-0.1f, 0.0f, 0.0f);
-        Shader.CHARACTER.disable();
-    }
-
-    public void renderImage()
-    {
-        Shader.IMAGE.enable();
-
-        for (int i = 0; i < image.length; i++)
-        {
-            image[i].getEntity().render("transformationMatrix");
-        }
-        Shader.IMAGE.disable();
-    }
-
-    public void renderHealthBar()
-    {
-        Shader.HEALTHBAR.enable();
-        for (int i = 0; i < healthbar.length; i++)
-        {
-            healthbar[i].getEntity().render("transformationMatrix");
-        }
-        Shader.HEALTHBAR.disable();
-    }
-
-    public void renderMenu()
-    {
-        Shader.MENU.enable();
-        menu.getEntity().render("transformationMatrix");
-        Shader.MENU.disable();
+        Shader.SPRITE.enable();
+        sprite.getEntity().render("transformationMatrix");
+        sprite.getEntity().increasePosition(0.1f, 0.0f, 0.0f);
+        sprite.getEntity().increasePosition(-0.1f, 0.0f, 0.0f);
+        Shader.SPRITE.disable();
     }
 }
