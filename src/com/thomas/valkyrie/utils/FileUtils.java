@@ -49,7 +49,7 @@ public class FileUtils
     /**
      *
      */
-    public static void getStartupData()
+    public static int[] getStartupData()
     {
         // Builds the path to the downloads direction
         String home = System.getProperty("user.home");
@@ -59,7 +59,7 @@ public class FileUtils
         File target = new File(directory + "/final-fantasy-tactics-advance-remastered-data/character-data.txt");
         System.out.println(target);
 
-        String chosenCharacters[] = new String[4];
+        int chosenCharacters[] = new int[4];
 
         try
         {
@@ -70,7 +70,7 @@ public class FileUtils
 
             while (bufferedReader.ready())
             {
-                chosenCharacters[index] = bufferedReader.readLine();
+                chosenCharacters[index] = Integer.parseInt(bufferedReader.readLine());
                 System.out.println(chosenCharacters[index]);
                 index += 1;
             }
@@ -78,8 +78,16 @@ public class FileUtils
         catch (IOException ex)
         {
             System.out.println("The program could not find the file specified");
+            System.out.println("The program will use the default party instead of the custom party selected");
+
+            for (int i = 0; i < 4; i++)
+            {
+                chosenCharacters[i] = i;
+            }
+
             ex.printStackTrace();
         }
 
+        return chosenCharacters;
     }
 }

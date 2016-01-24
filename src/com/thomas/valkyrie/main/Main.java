@@ -11,7 +11,9 @@
 package com.thomas.valkyrie.main;
 
 import com.thomas.valkyrie.UI.UI;
-import com.thomas.valkyrie.engine.Entity;
+import com.thomas.valkyrie.characters.BaseCharacter;
+import com.thomas.valkyrie.characters.BlackMage;
+import com.thomas.valkyrie.characters.Character;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.input.Keyboard;
@@ -23,6 +25,8 @@ import com.thomas.valkyrie.utils.FileUtils;
 import org.lwjgl.opengl.GL;
 
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -41,6 +45,9 @@ import static org.lwjgl.system.MemoryUtil.NULL;
  */
 public class Main implements Runnable
 {
+    final public static Character[] character = new Character[4];
+    final public static BaseCharacter[] baseCharacter = new BaseCharacter[4];
+
     private long windowID;
 
     private Keyboard keyboard;
@@ -68,9 +75,9 @@ public class Main implements Runnable
         last = 0;
 
         // Initializes program
-        init();
+        initGLFW();
 
-        FileUtils.getStartupData();
+        initData();
 
         // Starts audio
         thread = new Thread(this, "Game");
@@ -78,6 +85,8 @@ public class Main implements Runnable
 
         jagd = new Jagd();
         ui = new UI();
+
+        System.out.println(baseCharacter[2].health);
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -178,6 +187,35 @@ public class Main implements Runnable
         ui.render();
     }
 
+    public void initData()
+    {
+        int[] chosenCharacters = new int[4];
+        chosenCharacters = FileUtils.getStartupData();
+
+        for (int i = 0; i < chosenCharacters.length; i++)
+        {
+            Object object;
+
+            switch (chosenCharacters[i])
+            {
+                case 0 :
+                    baseCharacter[i] = new BlackMage();
+//                    character[i] = new Character(blackMage.getID(), blackMage.getHealth(), blackMage.getMeleeAttack(),
+//                            blackMage.getMobility(), blackMage.getRange(), blackMage.getTexture());
+                    break;
+
+                case 1 : baseCharacter[i] = new BlackMage();
+                        break;
+
+                case 2 :
+                        break;
+
+                case 3 :
+                        break;
+            }
+        }
+    }
+
     /**
      * Initializes GLFW window processes and OpenGL states. Catches
      * all window creation exceptions and sets input callbacks to take
@@ -187,7 +225,7 @@ public class Main implements Runnable
      *
      * <p> Sets GLContext to this thread </p>
      */
-    private void init()
+    private void initGLFW()
     {
         // Initializes GLFW background processes and throws
         // exception if GLFW cannot be initialized
@@ -240,8 +278,6 @@ public class Main implements Runnable
         // Prints out OpenGL version being used
         System.out.println(glGetString(GL_VERSION));
     }
-
-
 
     /**
      * Called when program begins execution
