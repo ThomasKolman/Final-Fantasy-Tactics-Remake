@@ -13,6 +13,9 @@ public class BaseCharacter
     final public int mobility;
     final public int range;
 
+    private int xPosition;
+    private int yPosition;
+
     final public Texture texture;
 
     protected BaseCharacter(int ID, int health, int meleeAttack, int mobility, int range, Texture texture)
@@ -28,5 +31,25 @@ public class BaseCharacter
     protected void move()
     {
 
+    }
+
+    public int getxPosition()
+    {
+        return xPosition;
+    }
+
+    public int getyPosition()
+    {
+        return yPosition;
+    }
+
+    public void setxPosition(int xPosition)
+    {
+        this.xPosition = xPosition;
+    }
+
+    public void setyPosition(int yPosition)
+    {
+        this.yPosition = yPosition;
     }
 }

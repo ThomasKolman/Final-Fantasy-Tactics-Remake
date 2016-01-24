@@ -71,7 +71,6 @@ public class FileUtils
             while (bufferedReader.ready())
             {
                 chosenCharacters[index] = Integer.parseInt(bufferedReader.readLine());
-                System.out.println(chosenCharacters[index]);
                 index += 1;
             }
         }

@@ -10,19 +10,16 @@
 
 package com.thomas.valkyrie.main;
 
+import com.thomas.valkyrie.UI.DynamicGraphics;
 import com.thomas.valkyrie.UI.UI;
-import com.thomas.valkyrie.characters.BaseCharacter;
-import com.thomas.valkyrie.characters.BlackMage;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.input.Keyboard;
 import com.thomas.valkyrie.input.MouseClick;
 import com.thomas.valkyrie.input.MousePosition;
 import com.thomas.valkyrie.input.MouseScroll;
-import com.thomas.valkyrie.level.BaseLevel;
 import com.thomas.valkyrie.level.Jagd;
 import com.thomas.valkyrie.logic.Logic;
-import com.thomas.valkyrie.utils.FileUtils;
 import org.lwjgl.opengl.GL;
 
 import java.awt.*;
@@ -74,15 +71,15 @@ public class Main implements Runnable
         // Initializes program
         initGLFW();
 
-        BaseLevel baseLevel = new Jagd();
-        logic = new Logic(baseLevel);
-
         // Starts audio
         thread = new Thread(this, "Game");
         thread.start();
 
         jagd = new Jagd();
+        logic = new Logic(jagd);
         ui = new UI();
+
+        logic.update();
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -181,6 +178,7 @@ public class Main implements Runnable
 
         jagd.render();
         ui.render();
+        DynamicGraphics.renderIndicators();
     }
 
     /**

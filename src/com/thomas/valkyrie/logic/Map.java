@@ -9,9 +9,14 @@ import java.util.List;
 public class Map
 {
     private Node[][] nodeMap;
+    final private int rows;
+    final private int columns;
 
     public Map(int rows, int columns)
     {
+        this.rows = rows;
+        this.columns = columns;
+
         // Sets map size
         nodeMap = new Node[rows][columns];
 
@@ -28,7 +33,7 @@ public class Map
     /**
      *
      */
-    public void fillNodeData(int xPos, int yPos)
+    public void updateNodeData(int xPos, int yPos)
     {
         for (int i = 0; i < nodeMap[0].length; i++)
         {
@@ -37,6 +42,11 @@ public class Map
                 nodeMap[i][j].changeHeuristic(calculateManhattanDistance(xPos, yPos, i, j));
             }
         }
+    }
+
+    public int getNodeData(int xPos, int yPos)
+    {
+        return nodeMap[xPos][yPos].getHeuristic();
     }
 
     /**
@@ -53,5 +63,15 @@ public class Map
     {
         int heuristic = Math.abs(xPos - targetXPos) + Math.abs(yPos - targetYPos);
         return heuristic;
+    }
+
+    public int getRows()
+    {
+        return rows;
+    }
+
+    public int getColumns()
+    {
+        return columns;
     }
 }

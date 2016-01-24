@@ -36,9 +36,9 @@ public class Indicators
         final float[] vertices = new float[]
                 {
                         -0.9f, 0.9f, 0.0f,
-                        -0.9f, 0.7f, 0.0f,
-                        -0.7f, 0.7f, 0.0f,
-                        -0.7f, 0.9f, 0.0f
+                        -0.9f, 0.8f, 0.0f,
+                        -0.8f, 0.8f, 0.0f,
+                        -0.8f, 0.9f, 0.0f
                 };
 
         final float[] textureCoordinates = new float[]

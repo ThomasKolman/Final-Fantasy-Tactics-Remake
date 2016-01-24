@@ -18,6 +18,11 @@ public class Node
 
     public void changeHeuristic(int heuristic)
     {
+        this.heuristic = heuristic;
+    }
 
+    public int getHeuristic()
+    {
+        return heuristic;
     }
 }
