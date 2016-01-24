@@ -19,6 +19,7 @@ import com.thomas.valkyrie.input.MouseClick;
 import com.thomas.valkyrie.input.MousePosition;
 import com.thomas.valkyrie.input.MouseScroll;
 import com.thomas.valkyrie.level.Jagd;
+import com.thomas.valkyrie.utils.FileUtils;
 import org.lwjgl.opengl.GL;
 
 import java.awt.*;
@@ -68,6 +69,8 @@ public class Main implements Runnable
 
         // Initializes program
         init();
+
+        FileUtils.getStartupData();
 
         // Starts audio
         thread = new Thread(this, "Game");

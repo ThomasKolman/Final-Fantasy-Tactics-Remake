@@ -5,6 +5,8 @@ package com.thomas.valkyrie.characters;
  */
 public class BaseCharacter
 {
+    protected int ID;
+
     protected int health;
     protected int meleeAttack;
     protected int mobility;

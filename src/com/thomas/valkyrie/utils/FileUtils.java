@@ -8,6 +8,14 @@ import java.io.*;
 public class FileUtils
 {
 
+    /**
+     * Loads a GLSL program as a single string
+     *
+     * Cited code
+     *
+     * @param name takes in the program name
+     * @return the string of the program
+     */
     public static String loadAsString(String name)
     {
         StringBuilder source = new StringBuilder();
@@ -36,5 +44,42 @@ public class FileUtils
         }
 
         return source.toString();
+    }
+
+    /**
+     *
+     */
+    public static void getStartupData()
+    {
+        // Builds the path to the downloads direction
+        String home = System.getProperty("user.home");
+        File directory = new File(home + "/Downloads");
+
+        // Adds known files to directory path
+        File target = new File(directory + "/final-fantasy-tactics-advance-remastered-data/character-data.txt");
+        System.out.println(target);
+
+        String chosenCharacters[] = new String[4];
+
+        try
+        {
+            FileInputStream fileInputStream = new FileInputStream(target);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
+
+            int index = 0;
+
+            while (bufferedReader.ready())
+            {
+                chosenCharacters[index] = bufferedReader.readLine();
+                System.out.println(chosenCharacters[index]);
+                index += 1;
+            }
+        }
+        catch (IOException ex)
+        {
+            System.out.println("The program could not find the file specified");
+            ex.printStackTrace();
+        }
+
     }
 }
