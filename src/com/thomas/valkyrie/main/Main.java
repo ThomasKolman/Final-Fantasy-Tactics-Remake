@@ -19,6 +19,7 @@ import com.thomas.valkyrie.input.Keyboard;
 import com.thomas.valkyrie.input.MouseClick;
 import com.thomas.valkyrie.input.MousePosition;
 import com.thomas.valkyrie.input.MouseScroll;
+import com.thomas.valkyrie.level.BaseLevel;
 import com.thomas.valkyrie.level.Jagd;
 import com.thomas.valkyrie.logic.Logic;
 import com.thomas.valkyrie.utils.FileUtils;
@@ -73,7 +74,8 @@ public class Main implements Runnable
         // Initializes program
         initGLFW();
 
-        logic = new Logic();
+        BaseLevel baseLevel = new Jagd();
+        logic = new Logic(baseLevel);
 
         // Starts audio
         thread = new Thread(this, "Game");

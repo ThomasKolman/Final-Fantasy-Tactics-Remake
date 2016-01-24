@@ -2,6 +2,7 @@ package com.thomas.valkyrie.logic;
 
 import com.thomas.valkyrie.characters.BaseCharacter;
 import com.thomas.valkyrie.characters.BlackMage;
+import com.thomas.valkyrie.level.BaseLevel;
 import com.thomas.valkyrie.utils.FileUtils;
 
 /**
@@ -9,17 +10,17 @@ import com.thomas.valkyrie.utils.FileUtils;
  */
 public class Logic
 {
-    final private static BaseCharacter[] baseCharacter = new BaseCharacter[4];
+    final private BaseCharacter[] baseCharacter = new BaseCharacter[4];
+    final private BaseLevel baseLevel;
 
-    public Logic()
+    public Logic(BaseLevel baseLevel)
     {
-        int[] chosenCharacters;
-        chosenCharacters = FileUtils.getStartupData();
+        this.baseLevel = baseLevel;
+
+        int[] chosenCharacters = FileUtils.getStartupData();
 
         for (int i = 0; i < chosenCharacters.length; i++)
         {
-            Object object;
-
             switch (chosenCharacters[i])
             {
                 case 0 :
@@ -40,11 +41,9 @@ public class Logic
 
             }
         }
-
-        System.out.println(baseCharacter[2].health);
     }
 
-    public void checkMovementSpace()
+    public void update()
     {
 
     }
