@@ -11,10 +11,4 @@ public class Warrior extends BaseCharacter
     {
         super(1, 100, 20, 5, 3, new Texture("dirt_png"));
     }
-
-    @Override
-    public void move()
-    {
-
-    }
 }

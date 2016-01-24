@@ -13,7 +13,6 @@ package com.thomas.valkyrie.main;
 import com.thomas.valkyrie.UI.UI;
 import com.thomas.valkyrie.characters.BaseCharacter;
 import com.thomas.valkyrie.characters.BlackMage;
-import com.thomas.valkyrie.characters.Character;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.input.Keyboard;
@@ -200,18 +199,20 @@ public class Main implements Runnable
             {
                 case 0 :
                     baseCharacter[i] = new BlackMage();
-//                    character[i] = new Character(blackMage.getID(), blackMage.getHealth(), blackMage.getMeleeAttack(),
-//                            blackMage.getMobility(), blackMage.getRange(), blackMage.getTexture());
                     break;
 
-                case 1 : baseCharacter[i] = new BlackMage();
-                        break;
+                case 1 :
+                    baseCharacter[i] = new BlackMage();
+                    break;
 
                 case 2 :
-                        break;
+                    baseCharacter[i] = new BlackMage();
+                    break;
 
                 case 3 :
-                        break;
+                    baseCharacter[i] = new BlackMage();
+                    break;
+
             }
         }
     }
