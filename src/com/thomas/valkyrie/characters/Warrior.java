@@ -9,6 +9,6 @@ public class Warrior extends BaseCharacter
 {
     public Warrior()
     {
-        super(1, 100, 20, 5, 3, new Texture("dirt_png"));
+        super(1, 100, 20, 5, 3, 2, new Texture("dirt_png"));
     }
 }

@@ -10,6 +10,7 @@
 
 package com.thomas.valkyrie.main;
 
+import com.sun.org.apache.xpath.internal.functions.FuncFalse;
 import com.thomas.valkyrie.UI.DynamicGraphics;
 import com.thomas.valkyrie.UI.UI;
 import com.thomas.valkyrie.engine.Texture;
@@ -142,9 +143,15 @@ public class Main implements Runnable
      * @param delta takes in FPS time
      */
     private void update(float delta) {
+
         if (Keyboard.isKeyDown(GLFW_KEY_ESCAPE))
         {
             end();
+        }
+        else if (keyboard.isKeyDown(GLFW_KEY_LEFT) || keyboard.isKeyDown(GLFW_KEY_RIGHT))
+        {
+            logic.updateState();
+            logic.update();
         }
         else if (MouseClick.isMouseDown(GLFW_MOUSE_BUTTON_1))
         {
@@ -178,7 +185,6 @@ public class Main implements Runnable
 
         jagd.render();
         ui.render();
-        DynamicGraphics.renderIndicators();
     }
 
     /**

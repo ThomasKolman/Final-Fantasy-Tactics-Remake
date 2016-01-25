@@ -3,7 +3,6 @@ package com.thomas.valkyrie.logic;
 import com.thomas.valkyrie.UI.DynamicGraphics;
 import com.thomas.valkyrie.characters.BaseCharacter;
 import com.thomas.valkyrie.characters.BlackMage;
-import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.graphics.Indicators;
 import com.thomas.valkyrie.level.BaseLevel;
 import com.thomas.valkyrie.utils.FileUtils;
@@ -19,9 +18,60 @@ public class Logic
     final private BaseCharacter[] baseCharacter = new BaseCharacter[4];
     final private BaseLevel baseLevel;
 
-    final private DynamicGraphics dynamicGraphics = new DynamicGraphics();
-
     private int characterTurn = 0;
+    private int characterState = 0;
+
+    public void updateTurn()
+    {
+        characterTurn += 1;
+        if (characterTurn == 4)
+            characterTurn = 0;
+    }
+
+    public void updateState()
+    {
+        characterState += 1;
+        if (characterState == 3)
+            characterState = 0;
+    }
+
+    public void update()
+    {
+        DynamicGraphics.clearIndicators();
+
+        if (characterState == 0)
+        {
+            checkActionRange(baseCharacter[characterTurn].mobility);
+        }
+        else if (characterState == 1)
+        {
+            checkActionRange(baseCharacter[characterTurn].range);
+        }
+        else
+        {
+            checkActionRange(baseCharacter[characterTurn].range);
+        }
+    }
+
+    public void checkActionRange(int range)
+    {
+        baseLevel.map.updateNodeData(0, 0);
+        Indicators.create();
+        int indexer = 0;
+
+        for (int i = 0; i < baseLevel.map.getRows(); i++)
+        {
+            for (int j = 0; j < baseLevel.map.getColumns(); j++)
+            {
+                if (baseLevel.map.getNodeData(i, j) < range)
+                {
+                    DynamicGraphics.createNewIndicators(i, j, indexer, baseCharacter[characterTurn].getxPosition(),
+                            baseCharacter[characterTurn].getyPosition(), characterState);
+                    indexer += 1;
+                }
+            }
+        }
+    }
 
     public Logic(BaseLevel baseLevel)
     {
@@ -49,25 +99,6 @@ public class Logic
                     baseCharacter[i] = new BlackMage();
                     break;
 
-            }
-        }
-    }
-
-    public void update()
-    {
-        baseLevel.map.updateNodeData(0, 0);
-        Indicators.create();
-        int incrementList = 0;
-
-        for (int i = 0; i < baseLevel.map.getRows(); i++)
-        {
-            for (int j = 0; j < baseLevel.map.getColumns(); j++)
-            {
-                if (baseLevel.map.getNodeData(i, j) < baseCharacter[0].mobility)
-                {
-                    DynamicGraphics.createNewIndicators(i, j, incrementList, baseCharacter[0].getxPosition(), baseCharacter[0].getyPosition());
-                    incrementList += 1;
-                }
             }
         }
     }

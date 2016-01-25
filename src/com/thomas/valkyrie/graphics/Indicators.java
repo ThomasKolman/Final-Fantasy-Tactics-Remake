@@ -14,15 +14,28 @@ public class Indicators
     private Entity entity;
 
     private static VertexArray vertexArray;
-    private static Texture indicator_texture;
+    private static Texture blue_indicator_texture;
+    private static Texture red_indicator_texture;
+    private static Texture pink_indicator_texture;
 
-    public Indicators(float x, float y, float z)
+    public Indicators(float x, float y, float z, String texture)
     {
         position.x = x;
         position.y = y;
         position.z = z;
 
-        entity = new Entity(vertexArray, indicator_texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
+        switch (texture)
+        {
+            case "blue_texture" :
+                entity = new Entity(vertexArray, blue_indicator_texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
+                break;
+            case "red_texture" :
+                entity = new Entity(vertexArray, red_indicator_texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
+                break;
+            case "pink_texture" :
+                entity = new Entity(vertexArray, pink_indicator_texture, position, 0.0f, 0.0f, 0.0f, 0.0f);
+                break;
+        }
     }
 
     public Entity getEntity()
@@ -57,6 +70,8 @@ public class Indicators
                 };
 
         vertexArray = new VertexArray(vertices, textureCoordinates, indices);
-        indicator_texture = new Texture("blue_square.png");
+        blue_indicator_texture = new Texture("blue_indicator_tile.png");
+        red_indicator_texture = new Texture("red_indicator_tile.png");
+        pink_indicator_texture = new Texture("pink_indicator_tile.png");
     }
 }

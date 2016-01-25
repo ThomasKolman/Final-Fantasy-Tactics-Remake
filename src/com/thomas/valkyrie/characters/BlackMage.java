@@ -9,7 +9,7 @@ public class BlackMage extends BaseCharacter
 {
     public BlackMage()
     {
-        super(0, 100, 10, 4, 0, new Texture("black_mage.png"));
+        super(0, 100, 10, 4, 3, 2, new Texture("black_mage.png"));
     }
 
 }

@@ -1,5 +1,6 @@
 package com.thomas.valkyrie.level;
 
+import com.thomas.valkyrie.UI.DynamicGraphics;
 import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.graphics.*;
 import com.thomas.valkyrie.logic.Map;
@@ -36,6 +37,7 @@ public class Jagd extends BaseLevel
     {
         renderBackground();
         renderTiles();
+        DynamicGraphics.renderIndicators();
         renderCharacter();
     }
 

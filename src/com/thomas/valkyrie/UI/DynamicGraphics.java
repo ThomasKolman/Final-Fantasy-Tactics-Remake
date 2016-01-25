@@ -22,12 +22,15 @@ public class DynamicGraphics
         Indicators.create();
     }
 
-    public static void createNewIndicators(int row, int column, int incrementList, int xPosition, int yPosition)
+    public static void clearIndicators()
+    {
+        indicators.clear();
+    }
+
+    public static void createNewIndicators(int row, int column, int indexer, int xPosition, int yPosition, int state)
     {
         float rowCopy = row;
         float columnCopy = column;
-
-        System.out.println();
 
         float xIncrement = 0.0f;
         float yIncrement = 0.0f;
@@ -42,7 +45,17 @@ public class DynamicGraphics
         else
             yIncrement = -(columnCopy / 10);
 
-        indicators.put(incrementList, new Indicators(0.0f + xIncrement, 0.0f + yIncrement, 0.0f));
+        String texture = null;
+
+        if (state == 0)
+            texture = "blue_texture";
+        else if (state == 1)
+            texture = "red_texture";
+        else
+            texture = "pink_texture";
+
+
+        indicators.put(indexer, new Indicators(0.0f + xIncrement, 0.0f + yIncrement, 0.0f, texture));
     }
 
     public static void renderIndicators()
