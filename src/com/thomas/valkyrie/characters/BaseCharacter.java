@@ -14,8 +14,8 @@ public class BaseCharacter
     final public int range;
     final public int healPower;
 
-    private int xPosition;
-    private int yPosition;
+    private float xPosition;
+    private float yPosition;
 
     final public Texture texture;
 
@@ -35,22 +35,22 @@ public class BaseCharacter
 
     }
 
-    public int getxPosition()
+    public float getxPosition()
     {
         return xPosition;
     }
 
-    public int getyPosition()
+    public float getyPosition()
     {
         return yPosition;
     }
 
-    public void setxPosition(int xPosition)
+    public void setxPosition(float xPosition)
     {
         this.xPosition = xPosition;
     }
 
-    public void setyPosition(int yPosition)
+    public void setyPosition(float yPosition)
     {
         this.yPosition = yPosition;
     }

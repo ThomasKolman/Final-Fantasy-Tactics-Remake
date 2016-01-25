@@ -33,7 +33,7 @@ public class DynamicGraphics
         yPositions.clear();
     }
 
-    public static void createNewIndicators(int row, int column, int indexer, int xPosition, int yPosition, int state)
+    public static void createNewIndicators(int row, int column, int indexer, float xPosition, float yPosition, int state)
     {
         float rowCopy = row;
         float columnCopy = column;
@@ -93,5 +93,12 @@ public class DynamicGraphics
     public static List<Integer> getyPositions()
     {
         return yPositions;
+    }
+
+    public static void moveCharacter(float xTarget, float yTarget)
+    {
+        Shader.SPRITE.enable();
+
+        Shader.SPRITE.disable();
     }
 }

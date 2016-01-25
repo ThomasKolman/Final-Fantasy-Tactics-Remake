@@ -18,7 +18,6 @@ public class Jagd extends BaseLevel
     // Static graphics
     private Tile[][] tile = new Tile[row][column];
     private Background background;
-    private Sprite sprite;
 
     /**
      * Constructs game field
@@ -29,7 +28,6 @@ public class Jagd extends BaseLevel
 
         createBackground();
         createTiles();
-        createSprite();
         createIndicators();
     }
 
@@ -38,7 +36,6 @@ public class Jagd extends BaseLevel
         renderBackground();
         renderTiles();
         DynamicGraphics.renderIndicators();
-        renderSprite();
     }
 
     private void createBackground()
@@ -101,14 +98,6 @@ public class Jagd extends BaseLevel
         Shader.TILE.disable();
     }
 
-    private void createSprite()
-    {
-        Shader.SPRITE.enable();
-        Sprite.create();
-        sprite = new Sprite(0.0f, 0.0f, 1.0f);
-        Shader.SPRITE.disable();
-    }
-
     private void createIndicators()
     {
         Shader.INDICATOR.enable();
@@ -134,14 +123,5 @@ public class Jagd extends BaseLevel
         Shader.BG.enable();
         background.getEntity().render();
         Shader.BG.disable();
-    }
-
-    private void renderSprite()
-    {
-        Shader.SPRITE.enable();
-        sprite.getEntity().render("transformationMatrix");
-        sprite.getEntity().increasePosition(0.1f, 0.0f, 0.0f);
-        sprite.getEntity().increasePosition(-0.1f, 0.0f, 0.0f);
-        Shader.SPRITE.disable();
     }
 }

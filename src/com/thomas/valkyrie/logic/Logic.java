@@ -1,14 +1,12 @@
 package com.thomas.valkyrie.logic;
 
 import com.thomas.valkyrie.UI.DynamicGraphics;
+import com.thomas.valkyrie.animation.Animation;
 import com.thomas.valkyrie.characters.BaseCharacter;
 import com.thomas.valkyrie.characters.BlackMage;
 import com.thomas.valkyrie.graphics.Indicators;
 import com.thomas.valkyrie.level.BaseLevel;
 import com.thomas.valkyrie.utils.FileUtils;
-
-import java.util.*;
-import java.util.Map;
 
 /**
  * Created by Thomas on 2016-01-24.
@@ -35,7 +33,7 @@ public class Logic
             characterState = 0;
     }
 
-    public void update()
+    public void preActionUpdate()
     {
         if (characterState == 0)
         {
@@ -70,6 +68,21 @@ public class Logic
                 }
             }
         }
+    }
+
+    private void setNewPosition(float newXPos, float newYPos)
+    {
+        baseCharacter[characterState].setxPosition(newXPos);
+        baseCharacter[characterState].setyPosition(newYPos);
+    }
+
+    public void moveSprite(float xTarget, float yTarget, Animation animation)
+    {
+        animation.moveSprite(xTarget, yTarget, baseCharacter[characterState].getxPosition(),
+                baseCharacter[characterState].getyPosition());
+
+        setNewPosition(xTarget, yTarget);
+
     }
 
     public Logic(BaseLevel baseLevel)

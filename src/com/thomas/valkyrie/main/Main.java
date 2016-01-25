@@ -13,6 +13,7 @@ package com.thomas.valkyrie.main;
 import com.sun.org.apache.xpath.internal.functions.FuncFalse;
 import com.thomas.valkyrie.UI.DynamicGraphics;
 import com.thomas.valkyrie.UI.UI;
+import com.thomas.valkyrie.animation.Animation;
 import com.thomas.valkyrie.engine.Texture;
 import com.thomas.valkyrie.engine.VertexArray;
 import com.thomas.valkyrie.input.Keyboard;
@@ -21,6 +22,7 @@ import com.thomas.valkyrie.input.MousePosition;
 import com.thomas.valkyrie.input.MouseScroll;
 import com.thomas.valkyrie.level.Jagd;
 import com.thomas.valkyrie.logic.Logic;
+import com.thomas.valkyrie.utils.ThreadUtils;
 import org.lwjgl.opengl.GL;
 
 import java.awt.*;
@@ -54,6 +56,7 @@ public class Main implements Runnable
     private Jagd jagd;
     private UI ui;
     private Logic logic;
+    private Animation animation;
     private Thread thread;
 
     /**
@@ -81,8 +84,9 @@ public class Main implements Runnable
         jagd = new Jagd();
         logic = new Logic(jagd);
         ui = new UI();
+        animation = new Animation();
 
-        logic.update();
+        logic.preActionUpdate();
 
         // Game loop
         while (glfwWindowShouldClose(windowID) != GL_TRUE)
@@ -153,7 +157,7 @@ public class Main implements Runnable
         else if (keyboard.isKeyDown(GLFW_KEY_LEFT) || keyboard.isKeyDown(GLFW_KEY_RIGHT))
         {
             logic.updateState();
-            logic.update();
+            logic.preActionUpdate();
         }
         else if (MouseClick.isMouseDown(GLFW_MOUSE_BUTTON_1))
         {
@@ -172,10 +176,13 @@ public class Main implements Runnable
                     if (MousePosition.getyCartesian() < jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getyCoord()
                             && MousePosition.getyCartesian() > jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getyCoord() - 0.1f)
                     {
-                        secondCheck = true;
+                        logic.moveSprite(jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getxCoord(),
+                                jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getyCoord(), animation);
                     }
                 }
             }
+
+            ThreadUtils.sleepThread(500);
         }
 
 
@@ -194,6 +201,7 @@ public class Main implements Runnable
 
         jagd.render();
         ui.render();
+        animation.render();
     }
 
     /**
