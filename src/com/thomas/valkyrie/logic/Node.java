@@ -1,5 +1,7 @@
 package com.thomas.valkyrie.logic;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Thomas on 2016-01-23.
  */
@@ -16,23 +18,15 @@ public class Node
     {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
-        this.xCoord = xCoord;
-        this.yCoord = yCoord;
-
-        fixFloatingPointError();
+        this.xCoord = fixFloatingPointError(xCoord);
+        this.yCoord = fixFloatingPointError(yCoord);
     }
 
-    public void fixFloatingPointError()
+    private float fixFloatingPointError(Float d)
     {
-        if (xCoord == 0.09999993)
-        {
-            xCoord = 0.0f;
-        }
-
-        if (yCoord < -7.4505806E-8)
-        {
-            xCoord = 0.0f;
-        }
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(2, BigDecimal.ROUND_UP);
+        return bd.floatValue();
     }
 
     public void changeHeuristic(int heuristic)

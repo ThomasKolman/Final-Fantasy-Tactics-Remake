@@ -37,8 +37,6 @@ public class Logic
 
     public void update()
     {
-        DynamicGraphics.clearIndicators();
-
         if (characterState == 0)
         {
             checkActionRange(baseCharacter[characterTurn].mobility);
@@ -57,6 +55,7 @@ public class Logic
     {
         baseLevel.map.updateNodeData(0, 0);
         Indicators.create();
+        DynamicGraphics.clearAll();
         int indexer = 0;
 
         for (int i = 0; i < baseLevel.map.getRows(); i++)

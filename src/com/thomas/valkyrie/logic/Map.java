@@ -20,7 +20,7 @@ public class Map
         // Sets map size
         nodeMap = new Node[rows][columns];
 
-        float xCoord = 0.9f;
+        float xCoord = -0.9f;
         float yCoord = 0.9f;
 
         // Fills nodeMap objects with positional data
@@ -29,12 +29,9 @@ public class Map
             for (int j = 0; j < nodeMap[1].length; j++)
             {
                 nodeMap[i][j] = new Node(i, j, xCoord, yCoord);
-//                System.out.println("Xcoord is : " + xCoord);
-//                System.out.println("Ycoord is : " + yCoord);
-                System.out.println(nodeMap[i][j].getyCoord());
-                xCoord -= 0.1f;
+                xCoord += 0.1f;
             }
-            xCoord = 0.9f;
+            xCoord = -0.9f;
             yCoord -= 0.1f;
         }
     }

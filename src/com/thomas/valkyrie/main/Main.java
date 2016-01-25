@@ -157,26 +157,25 @@ public class Main implements Runnable
         }
         else if (MouseClick.isMouseDown(GLFW_MOUSE_BUTTON_1))
         {
-            boolean check = false;
+            boolean firstCheck = false;
+            boolean secondCheck = false;
 
-            List<Float> xCoord = new ArrayList<>(DynamicGraphics.getxPositions());
-            List<Float> yCoord = new ArrayList<>(DynamicGraphics.getyPositions());
-
-            System.out.println(jagd.map.nodeMap[0][3].getxCoord());
-            System.out.println(jagd.map.nodeMap[0][0].getyCoord());
+            List<Integer> xCoord = new ArrayList<>(DynamicGraphics.getxPositions());
+            List<Integer> yCoord = new ArrayList<>(DynamicGraphics.getyPositions());
 
             for (int i = 0; i < xCoord.size(); i++)
             {
-                if (MousePosition.getxCartesian() > xCoord.get(i) && MousePosition.getxCartesian() < xCoord.get(i) + 0.1f)
+                if (MousePosition.getxCartesian() > jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getxCoord()
+                        && MousePosition.getxCartesian() < jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getxCoord() + 0.1f)
                 {
-                    if (MousePosition.getyCartesian() > yCoord.get(i) && MousePosition.getyCartesian() < yCoord.get(i) - 0.1f)
+                    firstCheck = true;
+                    if (MousePosition.getyCartesian() < jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getyCoord()
+                            && MousePosition.getyCartesian() > jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getyCoord() - 0.1f)
                     {
-                        check = true;
+                        secondCheck = true;
                     }
                 }
             }
-
-            //System.out.println(check);
         }
 
 

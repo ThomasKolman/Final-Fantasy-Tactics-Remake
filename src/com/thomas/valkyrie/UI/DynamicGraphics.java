@@ -17,8 +17,8 @@ public class DynamicGraphics
     private static Map<Integer, Indicators> indicators = new HashMap<>();
 
     // Stores x and y coords for input handling
-    private static List<Float> xPositions = new ArrayList<>();
-    private static List<Float> yPositions = new ArrayList<>();
+    private static List<Integer> xPositions = new ArrayList<>();
+    private static List<Integer> yPositions = new ArrayList<>();
 
     public static void setIndicators(Map indicators)
     {
@@ -26,9 +26,11 @@ public class DynamicGraphics
         Indicators.create();
     }
 
-    public static void clearIndicators()
+    public static void clearAll()
     {
         indicators.clear();
+        xPositions.clear();
+        yPositions.clear();
     }
 
     public static void createNewIndicators(int row, int column, int indexer, int xPosition, int yPosition, int state)
@@ -37,6 +39,9 @@ public class DynamicGraphics
         float columnCopy = column;
         float xIncrement;
         float yIncrement;
+
+        xPositions.add(row);
+        yPositions.add(column);
 
         if (row > xPosition)
         {
@@ -80,12 +85,12 @@ public class DynamicGraphics
         Shader.INDICATOR.disable();
     }
 
-    public static List<Float> getxPositions()
+    public static List<Integer> getxPositions()
     {
         return xPositions;
     }
 
-    public static List<Float> getyPositions()
+    public static List<Integer> getyPositions()
     {
         return yPositions;
     }
