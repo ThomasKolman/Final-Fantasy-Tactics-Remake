@@ -40,7 +40,7 @@ public class BaseCharacter
         this.yPosition = yPosition;
 
         createCharacter();
-        move(xPosition, yPosition, 0.9f, 0.9f);
+        move(xPosition, yPosition, -0.9f, 0.9f);
     }
 
     private void createCharacter()

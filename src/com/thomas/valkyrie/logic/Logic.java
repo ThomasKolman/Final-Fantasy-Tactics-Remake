@@ -1,15 +1,14 @@
 package com.thomas.valkyrie.logic;
 
 import com.thomas.valkyrie.UI.DynamicGraphics;
-import com.thomas.valkyrie.animation.Animation;
 import com.thomas.valkyrie.characters.BaseCharacter;
 import com.thomas.valkyrie.characters.BlackMage;
 import com.thomas.valkyrie.engine.Shader;
-import com.thomas.valkyrie.graphics.Indicators;
 import com.thomas.valkyrie.input.MousePosition;
 import com.thomas.valkyrie.level.BaseLevel;
 import com.thomas.valkyrie.maths.CoordMath;
 import com.thomas.valkyrie.utils.FileUtils;
+import com.thomas.valkyrie.utils.ThreadUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +38,15 @@ public class Logic
             characterState = 0;
     }
 
+    public void resetAll()
+    {
+        DynamicGraphics.clearAll();
+        updateTurn();
+        characterState = 0;
+        ThreadUtils.sleepThread(200);
+        preActionUpdate();
+    }
+
     public void preActionUpdate()
     {
         if (characterState == 0)
@@ -57,11 +65,17 @@ public class Logic
 
     public void checkActionRange(int range)
     {
-        int xPosition = CoordMath.floatToInt(baseCharacter[characterTurn].getxPosition());
-        int yPosition = CoordMath.floatToInt(baseCharacter[characterTurn].getyPosition());
-        baseLevel.map.updateNodeData(xPosition, yPosition);
-
         DynamicGraphics.clearAll();
+        int xPosition = baseLevel.map.swapXCoordForInt(baseCharacter[characterTurn].getxPosition());
+        int yPosition = baseLevel.map.swapYCoordForInt(baseCharacter[characterTurn].getyPosition());
+
+        System.out.println(baseCharacter[characterTurn].getxPosition());
+        System.out.println(xPosition);
+        System.out.println(baseCharacter[characterTurn].getyPosition());
+        System.out.println(yPosition);
+
+        baseLevel.map.updateNodeData(xPosition, yPosition);
+//        System.out.println(baseLevel.map.getNodeData(2, 0));
         int indexer = 0;
 
         for (int i = 0; i < baseLevel.map.getRows(); i++)
@@ -84,7 +98,7 @@ public class Logic
         baseCharacter[characterTurn].setyPosition(newYPos);
     }
 
-    public void move(Animation animation)
+    public void move()
     {
         float xTarget;
         float yTarget;
@@ -104,6 +118,8 @@ public class Logic
                     baseCharacter[characterTurn].move(xTarget, yTarget, baseCharacter[characterTurn].getxPosition(),
                             baseCharacter[characterTurn].getyPosition());
                     setNewPosition(xTarget, yTarget);
+
+                    resetAll();
                 }
             }
         }
@@ -116,10 +132,10 @@ public class Logic
 
         Shader[] listOfShaders = new Shader[]
                 {
-                    Shader.SPRITE_ONE,
-                    Shader.SPRITE_TWO,
-                    Shader.SPRITE_THREE,
-                    Shader.SPRITE_FOUR
+                        Shader.SPRITE_ONE,
+                        Shader.SPRITE_TWO,
+                        Shader.SPRITE_THREE,
+                        Shader.SPRITE_FOUR
                 };
 
         float[] listOfStartingXPositions = new float[]
@@ -134,8 +150,8 @@ public class Logic
                 {
                         0.9f,
                         0.8f,
-                        -0.2f,
-                        -0.3f
+                        -0.1f,
+                        -0.2f
                 };
 
         for (int i = 0; i < chosenCharacters.length; i++)

@@ -11,8 +11,8 @@ public class Node
 
     final private int xPosition;
     final private int yPosition;
-    private float xCoord;
-    private float yCoord;
+    final private float xCoord;
+    final private float yCoord;
 
     public Node(int xPosition, int yPosition, float xCoord, float yCoord)
     {
@@ -39,11 +39,23 @@ public class Node
         return heuristic;
     }
 
-    public float getxCoord() {
+    public int getyPosition()
+    {
+        return yPosition;
+    }
+
+    public int getxPosition()
+    {
+        return xPosition;
+    }
+
+    public float getxCoord()
+    {
         return xCoord;
     }
 
-    public float getyCoord() {
+    public float getyCoord()
+    {
         return yCoord;
     }
 }

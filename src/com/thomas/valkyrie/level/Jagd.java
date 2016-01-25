@@ -35,7 +35,6 @@ public class Jagd extends BaseLevel
     {
         renderBackground();
         renderTiles();
-        DynamicGraphics.renderIndicators();
     }
 
     private void createBackground()

@@ -71,6 +71,38 @@ public class Map
         return heuristic;
     }
 
+    public int swapXCoordForInt(float coord)
+    {
+        for (int i = 0; i < nodeMap[0].length; i++)
+        {
+            for (int j = 0; j < nodeMap[1].length; j++)
+            {
+                if (coord == nodeMap[i][j].getxCoord())
+                {
+                    return nodeMap[i][j].getxPosition();
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    public int swapYCoordForInt(float coord)
+    {
+        for (int i = 0; i < nodeMap[0].length; i++)
+        {
+            for (int j = 0; j < nodeMap[1].length; j++)
+            {
+                if (coord == nodeMap[i][j].getyCoord())
+                {
+                    return nodeMap[i][j].getyPosition();
+                }
+            }
+        }
+
+        return -1;
+    }
+
     public int getRows()
     {
         return rows;

@@ -11,28 +11,4 @@ import com.thomas.valkyrie.maths.CoordMath;
 public class Animation
 {
 
-//    public Animation()
-//    {
-//        createSprite();
-//    }
-//
-//    public void render()
-//    {
-//        renderSprite();
-//    }
-//
-//    private void createSprite()
-//    {
-//        Shader.SPRITE.enable();
-//        Sprite.create();
-//        sprite = new Sprite(0.0f, 0.0f, 1.0f);
-//        Shader.SPRITE.disable();
-//    }
-//
-//    private void renderSprite()
-//    {
-//        Shader.SPRITE.enable();
-//        sprite.getEntity().render("transformationMatrix");
-//        Shader.SPRITE.disable();
-//    }
 }

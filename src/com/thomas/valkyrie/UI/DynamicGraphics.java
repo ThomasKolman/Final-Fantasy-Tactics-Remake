@@ -24,7 +24,6 @@ public class DynamicGraphics
     public static void setIndicators(Map indicators)
     {
         DynamicGraphics.indicators = indicators;
-        Indicators.create();
     }
 
     public static void clearAll()
@@ -76,9 +75,12 @@ public class DynamicGraphics
     {
         Shader.INDICATOR.enable();
 
-        for (int i = 0; i < indicators.size(); i++)
+        if (indicators.size() != 0)
         {
-            indicators.get(i).getEntity().render("transformationMatrix");
+            for (int i = 0; i < indicators.size(); i++)
+            {
+                indicators.get(i).getEntity().render("transformationMatrix");
+            }
         }
 
         Shader.INDICATOR.disable();

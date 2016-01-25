@@ -10,7 +10,6 @@
 
 package com.thomas.valkyrie.main;
 
-import com.sun.org.apache.xpath.internal.functions.FuncFalse;
 import com.thomas.valkyrie.UI.DynamicGraphics;
 import com.thomas.valkyrie.UI.UI;
 import com.thomas.valkyrie.animation.Animation;
@@ -26,8 +25,6 @@ import com.thomas.valkyrie.utils.ThreadUtils;
 import org.lwjgl.opengl.GL;
 
 import java.awt.*;
-import java.util.*;
-import java.util.List;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -84,7 +81,6 @@ public class Main implements Runnable
         jagd = new Jagd();
         logic = new Logic(jagd);
         ui = new UI();
-        animation = new Animation();
 
         logic.preActionUpdate();
 
@@ -162,8 +158,7 @@ public class Main implements Runnable
         }
         else if (MouseClick.isMouseDown(GLFW_MOUSE_BUTTON_1))
         {
-            logic.move(animation);
-            logic.updateTurn();
+            logic.move();
             ThreadUtils.sleepThread(500);
         }
 
@@ -182,6 +177,7 @@ public class Main implements Runnable
         glClear(GL_COLOR_BUFFER_BIT);
 
         jagd.render();
+        DynamicGraphics.renderIndicators();
         ui.render();
 
         for (int i = 0; i < logic.baseCharacter.length; i++)
