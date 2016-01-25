@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Map
 {
-    private Node[][] nodeMap;
+    final public Node[][] nodeMap;
     final private int rows;
     final private int columns;
 
@@ -20,13 +20,22 @@ public class Map
         // Sets map size
         nodeMap = new Node[rows][columns];
 
+        float xCoord = 0.9f;
+        float yCoord = 0.9f;
+
         // Fills nodeMap objects with positional data
         for (int i = 0; i < nodeMap[0].length; i++)
         {
             for (int j = 0; j < nodeMap[1].length; j++)
             {
-                nodeMap[i][j] = new Node(i, j);
+                nodeMap[i][j] = new Node(i, j, xCoord, yCoord);
+//                System.out.println("Xcoord is : " + xCoord);
+//                System.out.println("Ycoord is : " + yCoord);
+                System.out.println(nodeMap[i][j].getyCoord());
+                xCoord -= 0.1f;
             }
+            xCoord = 0.9f;
+            yCoord -= 0.1f;
         }
     }
 

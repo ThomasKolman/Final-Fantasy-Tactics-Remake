@@ -16,6 +16,10 @@ public class DynamicGraphics
     // Dynamic graphics
     private static Map<Integer, Indicators> indicators = new HashMap<>();
 
+    // Stores x and y coords for input handling
+    private static List<Float> xPositions = new ArrayList<>();
+    private static List<Float> yPositions = new ArrayList<>();
+
     public static void setIndicators(Map indicators)
     {
         DynamicGraphics.indicators = indicators;
@@ -31,19 +35,26 @@ public class DynamicGraphics
     {
         float rowCopy = row;
         float columnCopy = column;
-
-        float xIncrement = 0.0f;
-        float yIncrement = 0.0f;
+        float xIncrement;
+        float yIncrement;
 
         if (row > xPosition)
+        {
             xIncrement = (rowCopy / 10);
+        }
         else
+        {
             xIncrement = -(rowCopy / 10);
+        }
 
         if (column < yPosition)
+        {
             yIncrement = (columnCopy / 10);
+        }
         else
+        {
             yIncrement = -(columnCopy / 10);
+        }
 
         String texture = null;
 
@@ -53,7 +64,6 @@ public class DynamicGraphics
             texture = "red_texture";
         else
             texture = "pink_texture";
-
 
         indicators.put(indexer, new Indicators(0.0f + xIncrement, 0.0f + yIncrement, 0.0f, texture));
     }
@@ -68,5 +78,15 @@ public class DynamicGraphics
         }
 
         Shader.INDICATOR.disable();
+    }
+
+    public static List<Float> getxPositions()
+    {
+        return xPositions;
+    }
+
+    public static List<Float> getyPositions()
+    {
+        return yPositions;
     }
 }

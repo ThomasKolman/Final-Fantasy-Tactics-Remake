@@ -24,6 +24,8 @@ import com.thomas.valkyrie.logic.Logic;
 import org.lwjgl.opengl.GL;
 
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -156,17 +158,25 @@ public class Main implements Runnable
         else if (MouseClick.isMouseDown(GLFW_MOUSE_BUTTON_1))
         {
             boolean check = false;
-            System.out.println(MousePosition.getxCartesian());
-            if (MousePosition.getxCartesian() > -0.9f && MousePosition.getxCartesian() < -0.7f)
-            {
-                check = true;
-                if (MousePosition.getyCartesian() > 0.7f && MousePosition.getyCartesian() < 0.9f)
-                {
 
+            List<Float> xCoord = new ArrayList<>(DynamicGraphics.getxPositions());
+            List<Float> yCoord = new ArrayList<>(DynamicGraphics.getyPositions());
+
+            System.out.println(jagd.map.nodeMap[0][3].getxCoord());
+            System.out.println(jagd.map.nodeMap[0][0].getyCoord());
+
+            for (int i = 0; i < xCoord.size(); i++)
+            {
+                if (MousePosition.getxCartesian() > xCoord.get(i) && MousePosition.getxCartesian() < xCoord.get(i) + 0.1f)
+                {
+                    if (MousePosition.getyCartesian() > yCoord.get(i) && MousePosition.getyCartesian() < yCoord.get(i) - 0.1f)
+                    {
+                        check = true;
+                    }
                 }
             }
 
-            System.out.println(check);
+            //System.out.println(check);
         }
 
 

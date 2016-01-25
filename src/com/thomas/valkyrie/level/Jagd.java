@@ -29,7 +29,7 @@ public class Jagd extends BaseLevel
 
         createBackground();
         createTiles();
-        createCharacter();
+        createSprite();
         createIndicators();
     }
 
@@ -38,7 +38,7 @@ public class Jagd extends BaseLevel
         renderBackground();
         renderTiles();
         DynamicGraphics.renderIndicators();
-        renderCharacter();
+        renderSprite();
     }
 
     private void createBackground()
@@ -101,7 +101,7 @@ public class Jagd extends BaseLevel
         Shader.TILE.disable();
     }
 
-    private void createCharacter()
+    private void createSprite()
     {
         Shader.SPRITE.enable();
         Sprite.create();
@@ -136,7 +136,7 @@ public class Jagd extends BaseLevel
         Shader.BG.disable();
     }
 
-    private void renderCharacter()
+    private void renderSprite()
     {
         Shader.SPRITE.enable();
         sprite.getEntity().render("transformationMatrix");
