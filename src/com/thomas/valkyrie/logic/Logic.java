@@ -5,8 +5,13 @@ import com.thomas.valkyrie.animation.Animation;
 import com.thomas.valkyrie.characters.BaseCharacter;
 import com.thomas.valkyrie.characters.BlackMage;
 import com.thomas.valkyrie.graphics.Indicators;
+import com.thomas.valkyrie.input.MousePosition;
 import com.thomas.valkyrie.level.BaseLevel;
+import com.thomas.valkyrie.maths.CoordMath;
 import com.thomas.valkyrie.utils.FileUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Thomas on 2016-01-24.
@@ -51,8 +56,10 @@ public class Logic
 
     public void checkActionRange(int range)
     {
-        baseLevel.map.updateNodeData(0, 0);
-        Indicators.create();
+        int xPosition = CoordMath.floatToInt(baseCharacter[characterTurn].getxPosition());
+        int yPosition = CoordMath.floatToInt(baseCharacter[characterTurn].getyPosition());
+        baseLevel.map.updateNodeData(xPosition, yPosition);
+
         DynamicGraphics.clearAll();
         int indexer = 0;
 
@@ -72,17 +79,33 @@ public class Logic
 
     private void setNewPosition(float newXPos, float newYPos)
     {
-        baseCharacter[characterState].setxPosition(newXPos);
-        baseCharacter[characterState].setyPosition(newYPos);
+        baseCharacter[characterTurn].setxPosition(newXPos);
+        baseCharacter[characterTurn].setyPosition(newYPos);
     }
 
-    public void moveSprite(float xTarget, float yTarget, Animation animation)
+    public void move(Animation animation)
     {
-        animation.moveSprite(xTarget, yTarget, baseCharacter[characterState].getxPosition(),
-                baseCharacter[characterState].getyPosition());
+        float xTarget;
+        float yTarget;
 
-        setNewPosition(xTarget, yTarget);
+        List<Integer> xCoord = new ArrayList<>(DynamicGraphics.getxPositions());
+        List<Integer> yCoord = new ArrayList<>(DynamicGraphics.getyPositions());
 
+        for (int i = 0; i < xCoord.size(); i++)
+        {
+            xTarget = baseLevel.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getxCoord();
+            yTarget = baseLevel.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getyCoord();
+
+            if (MousePosition.getxCartesian() > xTarget && MousePosition.getxCartesian() < xTarget + 0.1f)
+            {
+                if (MousePosition.getyCartesian() < yTarget && MousePosition.getyCartesian() > yTarget - 0.1f)
+                {
+                    animation.moveSprite(xTarget, yTarget, baseCharacter[characterTurn].getxPosition(),
+                            baseCharacter[characterTurn].getyPosition());
+                    setNewPosition(xTarget, yTarget);
+                }
+            }
+        }
     }
 
     public Logic(BaseLevel baseLevel)

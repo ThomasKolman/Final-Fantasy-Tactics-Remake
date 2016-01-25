@@ -2,6 +2,7 @@ package com.thomas.valkyrie.UI;
 
 import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.graphics.Indicators;
+import com.thomas.valkyrie.maths.CoordMath;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,8 +36,6 @@ public class DynamicGraphics
 
     public static void createNewIndicators(int row, int column, int indexer, float xPosition, float yPosition, int state)
     {
-        float rowCopy = row;
-        float columnCopy = column;
         float xIncrement;
         float yIncrement;
 
@@ -45,20 +44,20 @@ public class DynamicGraphics
 
         if (row > xPosition)
         {
-            xIncrement = (rowCopy / 10);
+            xIncrement = CoordMath.intToFloat(row);
         }
         else
         {
-            xIncrement = -(rowCopy / 10);
+            xIncrement = -(CoordMath.intToFloat(row));
         }
 
         if (column < yPosition)
         {
-            yIncrement = (columnCopy / 10);
+            yIncrement = CoordMath.intToFloat(column);
         }
         else
         {
-            yIncrement = -(columnCopy / 10);
+            yIncrement = -(CoordMath.intToFloat(column));
         }
 
         String texture = null;

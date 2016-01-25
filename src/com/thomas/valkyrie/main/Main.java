@@ -158,30 +158,11 @@ public class Main implements Runnable
         {
             logic.updateState();
             logic.preActionUpdate();
+            ThreadUtils.sleepThread(200);
         }
         else if (MouseClick.isMouseDown(GLFW_MOUSE_BUTTON_1))
         {
-            boolean firstCheck = false;
-            boolean secondCheck = false;
-
-            List<Integer> xCoord = new ArrayList<>(DynamicGraphics.getxPositions());
-            List<Integer> yCoord = new ArrayList<>(DynamicGraphics.getyPositions());
-
-            for (int i = 0; i < xCoord.size(); i++)
-            {
-                if (MousePosition.getxCartesian() > jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getxCoord()
-                        && MousePosition.getxCartesian() < jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getxCoord() + 0.1f)
-                {
-                    firstCheck = true;
-                    if (MousePosition.getyCartesian() < jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getyCoord()
-                            && MousePosition.getyCartesian() > jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getyCoord() - 0.1f)
-                    {
-                        logic.moveSprite(jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getxCoord(),
-                                jagd.map.nodeMap[xCoord.get(i)][yCoord.get(i)].getyCoord(), animation);
-                    }
-                }
-            }
-
+            logic.move(animation);
             ThreadUtils.sleepThread(500);
         }
 

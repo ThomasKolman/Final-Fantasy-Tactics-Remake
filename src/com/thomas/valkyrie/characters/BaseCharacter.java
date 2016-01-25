@@ -30,11 +30,6 @@ public class BaseCharacter
         this.texture = texture;
     }
 
-    protected void move()
-    {
-
-    }
-
     public float getxPosition()
     {
         return xPosition;
