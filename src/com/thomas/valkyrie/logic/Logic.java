@@ -4,6 +4,7 @@ import com.thomas.valkyrie.UI.DynamicGraphics;
 import com.thomas.valkyrie.animation.Animation;
 import com.thomas.valkyrie.characters.BaseCharacter;
 import com.thomas.valkyrie.characters.BlackMage;
+import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.graphics.Indicators;
 import com.thomas.valkyrie.input.MousePosition;
 import com.thomas.valkyrie.level.BaseLevel;
@@ -18,8 +19,8 @@ import java.util.List;
  */
 public class Logic
 {
-    final private BaseCharacter[] baseCharacter = new BaseCharacter[4];
-    final private BaseLevel baseLevel;
+    final public BaseCharacter[] baseCharacter = new BaseCharacter[4];
+    final public BaseLevel baseLevel;
 
     private int characterTurn = 0;
     private int characterState = 0;
@@ -100,7 +101,7 @@ public class Logic
             {
                 if (MousePosition.getyCartesian() < yTarget && MousePosition.getyCartesian() > yTarget - 0.1f)
                 {
-                    animation.moveSprite(xTarget, yTarget, baseCharacter[characterTurn].getxPosition(),
+                    baseCharacter[characterTurn].move(xTarget, yTarget, baseCharacter[characterTurn].getxPosition(),
                             baseCharacter[characterTurn].getyPosition());
                     setNewPosition(xTarget, yTarget);
                 }
@@ -111,30 +112,67 @@ public class Logic
     public Logic(BaseLevel baseLevel)
     {
         this.baseLevel = baseLevel;
-
         int[] chosenCharacters = FileUtils.getStartupData();
+
+        Shader[] listOfShaders = new Shader[]
+                {
+                    Shader.SPRITE_ONE,
+                    Shader.SPRITE_TWO,
+                    Shader.SPRITE_THREE,
+                    Shader.SPRITE_FOUR
+                };
+
+        float[] listOfStartingXPositions = new float[]
+                {
+                        -0.9f,
+                        -0.9f,
+                        0.2f,
+                        0.2f
+                };
+
+        float[] listOfStartingYPositions = new float[]
+                {
+                        0.9f,
+                        0.8f,
+                        -0.2f,
+                        -0.3f
+                };
 
         for (int i = 0; i < chosenCharacters.length; i++)
         {
             switch (chosenCharacters[i])
             {
                 case 0 :
-                    baseCharacter[i] = new BlackMage();
+                    baseCharacter[i] = new BlackMage(listOfShaders[i], listOfStartingXPositions[i],
+                            listOfStartingYPositions[i]);
                     break;
 
                 case 1 :
-                    baseCharacter[i] = new BlackMage();
+                    baseCharacter[i] = new BlackMage(listOfShaders[i], listOfStartingXPositions[i],
+                            listOfStartingYPositions[i]);
                     break;
 
                 case 2 :
-                    baseCharacter[i] = new BlackMage();
+                    baseCharacter[i] = new BlackMage(listOfShaders[i], listOfStartingXPositions[i],
+                            listOfStartingYPositions[i]);
                     break;
 
                 case 3 :
-                    baseCharacter[i] = new BlackMage();
+                    baseCharacter[i] = new BlackMage(listOfShaders[i], listOfStartingXPositions[i],
+                            listOfStartingYPositions[i]);
                     break;
 
             }
         }
+    }
+
+    public int getCharacterTurn()
+    {
+        return characterTurn;
+    }
+
+    public int getCharacterState()
+    {
+        return characterState;
     }
 }

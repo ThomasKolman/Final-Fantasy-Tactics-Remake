@@ -93,11 +93,4 @@ public class DynamicGraphics
     {
         return yPositions;
     }
-
-    public static void moveCharacter(float xTarget, float yTarget)
-    {
-        Shader.SPRITE.enable();
-
-        Shader.SPRITE.disable();
-    }
 }

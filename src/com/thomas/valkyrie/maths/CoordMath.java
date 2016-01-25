@@ -17,4 +17,10 @@ public class CoordMath
         float result = copy / 10;
         return result;
     }
+
+    public static float getDifference(float position, float targetPosition)
+    {
+        float result = -(position - targetPosition);
+        return result;
+    }
 }

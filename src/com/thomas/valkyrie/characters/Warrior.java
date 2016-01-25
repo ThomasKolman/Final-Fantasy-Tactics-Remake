@@ -1,5 +1,6 @@
 package com.thomas.valkyrie.characters;
 
+import com.thomas.valkyrie.engine.Shader;
 import com.thomas.valkyrie.engine.Texture;
 
 /**
@@ -7,8 +8,8 @@ import com.thomas.valkyrie.engine.Texture;
  */
 public class Warrior extends BaseCharacter
 {
-    public Warrior()
+    public Warrior(Shader SPRITE, float xPosition, float yPosition)
     {
-        super(1, 100, 20, 5, 3, 2, new Texture("dirt_png"));
+        super(1, 100, 20, 5, 3, 2, new Texture("dirt_png"), SPRITE, xPosition, yPosition);
     }
 }

@@ -163,6 +163,7 @@ public class Main implements Runnable
         else if (MouseClick.isMouseDown(GLFW_MOUSE_BUTTON_1))
         {
             logic.move(animation);
+            logic.updateTurn();
             ThreadUtils.sleepThread(500);
         }
 
@@ -182,7 +183,11 @@ public class Main implements Runnable
 
         jagd.render();
         ui.render();
-        animation.render();
+
+        for (int i = 0; i < logic.baseCharacter.length; i++)
+        {
+            logic.baseCharacter[i].render();
+        }
     }
 
     /**
